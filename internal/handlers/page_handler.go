@@ -3,6 +3,9 @@ package handlers
 import (
 	"html/template"
 	"net/http"
+	"strconv"
+	"strings"
+	"time"
 
 	"go-server/internal/services"
 )
@@ -58,6 +61,55 @@ func (h *PageHandler) Testimonials(w http.ResponseWriter, r *http.Request) {
 func (h *PageHandler) Courses(w http.ResponseWriter, r *http.Request) {
 	// Execute layout template with courses page data
 	data := h.pageService.GetCoursesData()
+	err := h.templates.ExecuteTemplate(w, "layout", data)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+}
+
+func (h *PageHandler) AgeCheck(w http.ResponseWriter, r *http.Request) {
+	data := h.pageService.GetAgeCheckData()
+	err := h.templates.ExecuteTemplate(w, "layout", data)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+}
+
+func (h *PageHandler) VerifyAge(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		http.Redirect(w, r, "/age-check", http.StatusSeeOther)
+		return
+	}
+
+	// Sanitize and validate input
+	ageStr := strings.TrimSpace(r.FormValue("age"))
+	age, err := strconv.Atoi(ageStr)
+	if err != nil {
+		// Invalid input, redirect back to age check
+		http.Redirect(w, r, "/age-check", http.StatusSeeOther)
+		return
+	}
+
+	if age >= 20 {
+		// Set cookie
+		cookie := &http.Cookie{
+			Name:     "age_verified",
+			Value:    "true",
+			Path:     "/",
+			HttpOnly: true,
+			Expires:  time.Now().Add(24 * time.Hour),
+		}
+		http.SetCookie(w, cookie)
+		http.Redirect(w, r, "/courses", http.StatusSeeOther)
+	} else {
+		http.Redirect(w, r, "/access-denied", http.StatusSeeOther)
+	}
+}
+
+func (h *PageHandler) AccessDenied(w http.ResponseWriter, r *http.Request) {
+	data := h.pageService.GetAccessDeniedData()
 	err := h.templates.ExecuteTemplate(w, "layout", data)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)

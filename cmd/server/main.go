@@ -10,6 +10,7 @@ import (
 	"github.com/go-chi/chi/v5/middleware"
 
 	"go-server/internal/handlers"
+	customMiddleware "go-server/internal/middleware"
 )
 
 func main() {
@@ -49,7 +50,17 @@ func main() {
 	r.Get("/", pageHandler.Home)
 	r.Get("/about", pageHandler.About)
 	r.Get("/testimonials", pageHandler.Testimonials)
-	r.Get("/courses", pageHandler.Courses)
+	
+	// Protected routes
+	r.Group(func(r chi.Router) {
+		r.Use(customMiddleware.AgeGate)
+		r.Get("/courses", pageHandler.Courses)
+	})
+
+	// Age Verification routes
+	r.Get("/age-check", pageHandler.AgeCheck)
+	r.Post("/verify-age", pageHandler.VerifyAge)
+	r.Get("/access-denied", pageHandler.AccessDenied)
 	
 	// 404 handler - must be last
 	r.NotFound(pageHandler.NotFound)

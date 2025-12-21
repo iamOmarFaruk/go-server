@@ -203,6 +203,26 @@ func (s *PageService) GetCoursesData() *models.CoursesPageData {
 	}
 }
 
+func (s *PageService) GetAgeCheckData() *models.PageData {
+	return &models.PageData{
+		Title:       "Age Verification - Go Web App",
+		Description: "Please verify your age to access this content.",
+		CurrentPage: "age-check",
+		CurrentYear: time.Now().Year(),
+		ContentType: "age-check",
+	}
+}
+
+func (s *PageService) GetAccessDeniedData() *models.PageData {
+	return &models.PageData{
+		Title:       "Access Denied - Go Web App",
+		Description: "You must be at least 20 years old to access this content.",
+		CurrentPage: "access-denied",
+		CurrentYear: time.Now().Year(),
+		ContentType: "access-denied",
+	}
+}
+
 /*
  * ┌── o m a r ──┐
  * │ @iamOmarFaruk
