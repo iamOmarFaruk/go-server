@@ -102,14 +102,3 @@ Follow these steps to get the project running on your local machine.
 *Crafting robust software with a touch of elegance.*
 
 </div>
-
----
-
-<!--
- ┌── o m a r ──┐
- │ gh@iamOmarFaruk
- │ omarfaruk.dev
- │ Created: 2025-12-21
- │ Updated: 2025-12-21
- └─ go-server ───┘
--->
