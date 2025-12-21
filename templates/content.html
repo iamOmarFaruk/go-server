@@ -1,0 +1,143 @@
+{{define "content"}}
+{{if eq .ContentType "home"}}
+        <!-- Home page content -->
+        <div class="hero">
+            <h1 class="hero-title">{{.HeroTitle}}</h1>
+            <p class="hero-subtitle">{{.HeroSubtitle}}</p>
+        </div>
+
+        <section class="features">
+            <div class="container">
+                <h2 class="section-title">Why Choose Go?</h2>
+                <div class="features-grid">
+                    {{range .Features}}
+                    <div class="feature-card">
+                        <div class="feature-icon">{{.Icon}}</div>
+                        <h3 class="feature-title">{{.Title}}</h3>
+                        <p class="feature-description">{{.Description}}</p>
+                    </div>
+                    {{end}}
+                </div>
+            </div>
+        </section>
+        {{end}}
+
+        {{if eq .ContentType "about"}}
+        <!-- About page content -->
+        <div class="page-header">
+            <div class="container">
+                <h1>About {{.CompanyName}}</h1>
+                <p class="page-subtitle">{{.Mission}}</p>
+            </div>
+        </div>
+
+        <section class="about-story">
+            <div class="container">
+                <div class="story-content">
+                    <h2>Our Story</h2>
+                    <p>{{.CompanyStory}}</p>
+                    <p>Founded in {{.FoundedYear}}, we've been at the forefront of Go web development, helping companies build scalable, high-performance applications that stand the test of time.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="team">
+            <div class="container">
+                <h2>Meet Our Team</h2>
+                <div class="team-grid">
+                    {{range .TeamMembers}}
+                    <div class="team-member">
+                        <div class="member-avatar">
+                            <img src="{{.ImageURL}}" alt="{{.Name}}" onerror="this.src='/static/images/default-avatar.svg'">
+                        </div>
+                        <h3 class="member-name">{{.Name}}</h3>
+                        <p class="member-role">{{.Role}}</p>
+                        <p class="member-bio">{{.Bio}}</p>
+                    </div>
+                    {{end}}
+                </div>
+            </div>
+        </section>
+        {{end}}
+
+        {{if eq .ContentType "testimonials"}}
+        <!-- Testimonials page content -->
+        <div class="page-header">
+            <div class="container">
+                <h1>Client Testimonials</h1>
+                <p class="page-subtitle">What our clients say about working with us</p>
+            </div>
+        </div>
+
+        <section class="stats">
+            <div class="container">
+                <div class="stats-grid">
+                    {{range .Stats}}
+                    <div class="stat-item">
+                        <div class="stat-number">{{.Number}}</div>
+                        <div class="stat-label">{{.Label}}</div>
+                    </div>
+                    {{end}}
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials">
+            <div class="container">
+                <h2>Client Stories</h2>
+                <div class="testimonials-grid">
+                    {{range .Testimonials}}
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">
+                                <img src="{{.ImageURL}}" alt="{{.Name}}" onerror="this.src='/static/images/default-avatar.svg'">
+                            </div>
+                            <div class="testimonial-info">
+                                <h3 class="testimonial-name">{{.Name}}</h3>
+                                <p class="testimonial-role">{{.Role}} at {{.Company}}</p>
+                                <div class="testimonial-rating">
+                                    {{if eq .Rating 5}}⭐⭐⭐⭐⭐{{end}}
+                                    {{if eq .Rating 4}}⭐⭐⭐⭐{{end}}
+                                    {{if eq .Rating 3}}⭐⭐⭐{{end}}
+                                    {{if eq .Rating 2}}⭐⭐{{end}}
+                                    {{if eq .Rating 1}}⭐{{end}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-content">
+                            <p>"{{.Content}}"</p>
+                        </div>
+                    </div>
+                    {{end}}
+                </div>
+            </div>
+        </section>
+        {{end}}
+
+        <!-- 404 page content (shown when no other content matches) -->
+        {{if eq .ContentType "404"}}
+        <div class="error-page">
+            <div class="error-container">
+                <div class="error-code">404</div>
+                <h1 class="error-title">Page Not Found</h1>
+                <p class="error-message">Oops! The page you're looking for doesn't exist.</p>
+                <p class="error-description">The URL you requested might have been moved, deleted, or never existed.</p>
+                
+                <div class="error-actions">
+                    <a href="/" class="btn-primary">Go Home</a>
+                    <a href="/about" class="btn-secondary">About Us</a>
+                </div>
+                
+                <div class="error-suggestions">
+                    <h3>Maybe you were looking for:</h3>
+                    <ul>
+                        <li><a href="/">Home - Welcome to Go Web App</a></li>
+                        <li><a href="/about">About - Learn about our company</a></li>
+                        <li><a href="/testimonials">Testimonials - See what clients say</a></li>
+                        <li><a href="/health">Health Check - API status</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {{end}}
+{{end}}

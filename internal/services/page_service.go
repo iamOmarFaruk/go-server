@@ -18,6 +18,7 @@ func (s *PageService) GetHomeData() *models.HomePageData {
 			Description: "Welcome to our amazing Go web application",
 			CurrentPage: "home",
 			CurrentYear: time.Now().Year(),
+			ContentType:  "home",
 		},
 		HeroTitle:    "Welcome to Go Web Development",
 		HeroSubtitle: "Building fast, scalable web applications with Go",
@@ -48,6 +49,7 @@ func (s *PageService) GetAboutData() *models.AboutPageData {
 			Description: "Learn more about our company and team",
 			CurrentPage: "about",
 			CurrentYear: time.Now().Year(),
+			ContentType:  "about",
 		},
 		CompanyName:  "Go Web Solutions",
 		CompanyStory: "We are passionate about building high-performance web applications using Go. Our team combines expertise in modern web development with deep knowledge of Go's ecosystem to deliver exceptional solutions.",
@@ -58,19 +60,19 @@ func (s *PageService) GetAboutData() *models.AboutPageData {
 				Name:     "Alex Johnson",
 				Role:     "CEO & Founder",
 				Bio:      "12+ years in web development, Go enthusiast since 2018",
-				ImageURL: "/static/images/team/alex.jpg",
+				ImageURL: "/static/images/default-avatar.svg",
 			},
 			{
 				Name:     "Sarah Chen",
 				Role:     "Lead Developer",
 				Bio:      "Full-stack developer specializing in Go and cloud architecture",
-				ImageURL: "/static/images/team/sarah.jpg",
+				ImageURL: "/static/images/default-avatar.svg",
 			},
 			{
 				Name:     "Mike Rodriguez",
 				Role:     "DevOps Engineer",
 				Bio:      "Containerization expert and CI/CD pipeline specialist",
-				ImageURL: "/static/images/team/mike.jpg",
+				ImageURL: "/static/images/default-avatar.svg",
 			},
 		},
 	}
@@ -83,6 +85,7 @@ func (s *PageService) GetTestimonialData() *models.TestimonialPageData {
 			Description: "What our clients say about our Go web development services",
 			CurrentPage: "testimonials",
 			CurrentYear: time.Now().Year(),
+			ContentType:  "testimonials",
 		},
 		Testimonials: []models.Testimonial{
 			{
@@ -91,7 +94,7 @@ func (s *PageService) GetTestimonialData() *models.TestimonialPageData {
 				Company: "TechStart Inc.",
 				Content: "The performance improvement we saw after migrating to Go was incredible. Page loads dropped by 60% and server costs went down significantly.",
 				Rating:  5,
-				ImageURL: "/static/images/testimonials/david.jpg",
+				ImageURL: "/static/images/default-avatar.svg",
 			},
 			{
 				Name:    "Emma Thompson",
@@ -99,7 +102,7 @@ func (s *PageService) GetTestimonialData() *models.TestimonialPageData {
 				Company: "Digital Solutions Ltd.",
 				Content: "The team's expertise in Go and clean architecture patterns helped us build a scalable system that handles millions of requests daily.",
 				Rating:  5,
-				ImageURL: "/static/images/testimonials/emma.jpg",
+				ImageURL: "/static/images/default-avatar.svg",
 			},
 			{
 				Name:    "Carlos Martinez",
@@ -107,7 +110,7 @@ func (s *PageService) GetTestimonialData() *models.TestimonialPageData {
 				Company: "StartupHub",
 				Content: "From concept to production in record time. The Go-based solution they built is both fast and maintainable.",
 				Rating:  5,
-				ImageURL: "/static/images/testimonials/carlos.jpg",
+				ImageURL: "/static/images/default-avatar.svg",
 			},
 		},
 		Stats: []models.Stat{
@@ -118,3 +121,11 @@ func (s *PageService) GetTestimonialData() *models.TestimonialPageData {
 		},
 	}
 }
+
+/*
+ * ┌── o m a r ──┐
+ * │ @iamOmarFaruk
+ * │ omarfaruk.dev
+ * │ Touched: 2025-12-21
+ * └─ go-server ───┘
+ */

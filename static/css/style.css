@@ -74,6 +74,25 @@ body {
     background: rgba(0, 173, 216, 0.1);
 }
 
+/* Hamburger Menu */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.hamburger {
+    width: 25px;
+    height: 3px;
+    background: #333;
+    margin: 3px 0;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
 /* Hero Section */
 .hero {
     background: linear-gradient(135deg, #00add8 0%, #0099bb 100%);
@@ -511,15 +530,38 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .nav-toggle {
+        display: flex;
+    }
+    
     .nav-container {
-        flex-direction: column;
+        position: relative;
         height: auto;
         padding: 1rem 20px;
     }
     
     .nav-menu {
-        margin-top: 1rem;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #fff;
+        flex-direction: column;
+        padding: 1rem 20px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        gap: 0;
+    }
+    
+    .nav-menu.nav-menu--open {
+        max-height: 300px;
         gap: 1rem;
+    }
+    
+    .nav-item {
+        margin: 0.5rem 0;
     }
     
     .hero-title {

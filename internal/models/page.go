@@ -5,6 +5,7 @@ type PageData struct {
 	Description string
 	CurrentPage string
 	CurrentYear int
+	ContentType  string  // home, about, testimonials, 404
 }
 
 type HomePageData struct {
@@ -55,3 +56,11 @@ type Stat struct {
 	Number string
 	Label  string
 }
+
+/*
+ * ┌── o m a r ──┐
+ * │ @iamOmarFaruk
+ * │ omarfaruk.dev
+ * │ Touched: 2025-12-21
+ * └─ go-server ───┘
+ */

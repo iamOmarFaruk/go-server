@@ -3,47 +3,21 @@ package handlers
 import (
 	"html/template"
 	"net/http"
-	"time"
 
 	"go-server/internal/services"
 )
 
 type PageHandler struct {
 	pageService *services.PageService
-	templates   map[string]*template.Template
+	templates   *template.Template
 }
 
 func NewPageHandler(templatePath string) (*PageHandler, error) {
-	// Create a template map for different pages
-	templates := make(map[string]*template.Template)
-	
-	// Parse home template
-	homeTmpl, err := template.ParseFiles(templatePath + "/home.html")
+	// Parse all templates - layout contains nav and footer includes
+	templates, err := template.ParseGlob(templatePath + "/*.html")
 	if err != nil {
 		return nil, err
 	}
-	templates["home"] = homeTmpl
-	
-	// Parse about template
-	aboutTmpl, err := template.ParseFiles(templatePath + "/about.html")
-	if err != nil {
-		return nil, err
-	}
-	templates["about"] = aboutTmpl
-	
-	// Parse testimonials template
-	testimonialsTmpl, err := template.ParseFiles(templatePath + "/testimonials.html")
-	if err != nil {
-		return nil, err
-	}
-	templates["testimonials"] = testimonialsTmpl
-	
-	// Parse 404 template
-	notFoundTmpl, err := template.ParseFiles(templatePath + "/404.html")
-	if err != nil {
-		return nil, err
-	}
-	templates["404"] = notFoundTmpl
 
 	return &PageHandler{
 		pageService: services.NewPageService(),
@@ -52,8 +26,9 @@ func NewPageHandler(templatePath string) (*PageHandler, error) {
 }
 
 func (h *PageHandler) Home(w http.ResponseWriter, r *http.Request) {
+	// Execute layout template with home page data
 	data := h.pageService.GetHomeData()
-	err := h.templates["home"].Execute(w, data)
+	err := h.templates.ExecuteTemplate(w, "layout", data)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -61,8 +36,9 @@ func (h *PageHandler) Home(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *PageHandler) About(w http.ResponseWriter, r *http.Request) {
+	// Execute layout template with about page data
 	data := h.pageService.GetAboutData()
-	err := h.templates["about"].Execute(w, data)
+	err := h.templates.ExecuteTemplate(w, "layout", data)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -70,8 +46,9 @@ func (h *PageHandler) About(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *PageHandler) Testimonials(w http.ResponseWriter, r *http.Request) {
+	// Execute layout template with testimonials page data
 	data := h.pageService.GetTestimonialData()
-	err := h.templates["testimonials"].Execute(w, data)
+	err := h.templates.ExecuteTemplate(w, "layout", data)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -82,21 +59,24 @@ func (h *PageHandler) NotFound(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html")
 	w.WriteHeader(http.StatusNotFound)
 	
-	data := struct{
-		Title       string
-		Description string
-		CurrentPage string
-		CurrentYear int
-	}{
-		Title:       "Page Not Found - 404 - Go Web App",
-		Description: "Oops! The page you're looking for doesn't exist.",
-		CurrentPage: "404",
-		CurrentYear: time.Now().Year(),
-	}
+	// Execute layout template with 404 page data
+	data := h.pageService.GetHomeData()
+	data.Title = "Page Not Found - 404 - Go Web App"
+	data.Description = "Oops! The page you're looking for doesn't exist."
+	data.CurrentPage = "404"
+	data.ContentType = "404"
 	
-	err := h.templates["404"].Execute(w, data)
+	err := h.templates.ExecuteTemplate(w, "layout", data)
 	if err != nil {
 		http.Error(w, "404 page not found", http.StatusNotFound)
 		return
 	}
 }
+
+/*
+ * ┌── o m a r ──┐
+ * │ @iamOmarFaruk
+ * │ omarfaruk.dev
+ * │ Touched: 2025-12-21
+ * └─ go-server ───┘
+ */

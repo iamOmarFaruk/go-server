@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"os"
 
+
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 
@@ -28,9 +29,21 @@ func main() {
 	r.Use(middleware.RealIP)
 	r.Use(middleware.Compress(5))
 
-	// Static files
+	// Check if static directory exists
+	if _, err := os.Stat("static"); os.IsNotExist(err) {
+		log.Fatal("Static directory 'static' does not exist")
+	}
+
+	// Static files with error handling
 	staticFs := http.FileServer(http.Dir("static"))
 	r.Handle("/static/*", http.StripPrefix("/static/", staticFs))
+
+	// Health check endpoint (before 404 handler)
+	r.Get("/health", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte(`{"status": "ok", "service": "go-web-app"}`))
+	})
 
 	// Routes
 	r.Get("/", pageHandler.Home)
@@ -39,12 +52,6 @@ func main() {
 	
 	// 404 handler - must be last
 	r.NotFound(pageHandler.NotFound)
-
-	// Health check endpoint
-	r.Get("/health", func(w http.ResponseWriter, r *http.Request) {
-		w.WriteHeader(http.StatusOK)
-		w.Write([]byte("OK"))
-	})
 
 	// Get port from environment or use default
 	port := os.Getenv("PORT")
@@ -57,3 +64,11 @@ func main() {
 		log.Fatal("Server failed to start:", err)
 	}
 }
+
+/*
+ * ┌── o m a r ──┐
+ * │ @iamOmarFaruk
+ * │ omarfaruk.dev
+ * │ Touched: 2025-12-21
+ * └─ go-server ───┘
+ */
