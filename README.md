@@ -1,125 +1,115 @@
-# Go Web App
+# 🌍 Travel & Stories Platform
 
-A simple web application built with Go, demonstrating routing, controllers, templates, and Docker deployment.
+> *Experience the journey. Share the adventure. Built with modern Go & Tailwind CSS.*
 
-## Features
+![Project Banner](https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=2000&auto=format&fit=crop)
 
-- **Go 1.21** with Chi router
-- **MVC Architecture** with proper separation of concerns
-- **HTML Templates** with layout inheritance
-- **Responsive Design** with modern CSS
-- **Docker Support** for containerized deployment
-- **Health Check** endpoint
-- **Static File Serving** for CSS, JS, and images
+## ✨ Overview
 
-## Project Structure
+Welcome to **Travel & Stories**, a next-generation web application designed for sharing immersive travel experiences. Built with performance and aesthetics in mind, this project demonstrates a robust **Go (Golang)** backend seamlessly integrated with a modern **Vite + Tailwind CSS v4** frontend.
+
+Whether you're exploring the interactve **Travel Guide** or reading through captivating **Stories**, this platform delivers a premium, smooth, and responsive user experience.
+
+## 🚀 Key Features
+
+*   **⚡ Blazing Fast Backend**: Powered by Go and the `chi` router for high-performance HTTP handling.
+*   **🎨 Premium UI/UX**: Crafted with **Tailwind CSS v4**, featuring glassmorphism, smooth animations, and a curated color palette (Emerald, Stone, Sky).
+*   **📱 Fully Responsive**: A mobile-first design approach ensures the site looks stunning on any device.
+*   **🖼️ Dynamic Content**: Grid layouts for stories with beautiful Unsplash image integrations.
+*   **🔁 Modern Dev Workflow**: Hot-reloading enabled via **Air** (Go) and **Vite** (Frontend) for an instant feedback loop.
+*   **🐳 Dockerized**: Fully containerized environment for consistent development and deployment.
+*   **🔒 Secure**: Custom middleware implementation for route protection (e.g., Age Verification).
+
+## 🛠️ Tech Stack
+
+### Backend
+*   **Go (Golang)**: Core language.
+*   **Chi**: Lightweight, idiomatic router.
+*   **Air**: Live reload for Go development.
+
+### Frontend
+*   **HTML5 Templates**: Efficient server-side rendering.
+*   **Tailwind CSS v4**: Utility-first styling with modern configuration.
+*   **Vite**: Next-generation frontend tooling for asset bundling.
+*   **JavaScript (ES6+)**: Interactive client-side enhancements.
+
+### DevOps
+*   **Docker & Docker Compose**: Containerization.
+*   **Make**: Automation commands.
+
+## 🏁 Getting Started
+
+Follow these steps to get the project running on your local machine.
+
+### Prerequisites
+*   [Go](https://go.dev/) (1.21+)
+*   [Node.js](https://nodejs.org/) & npm
+*   [Docker](https://www.docker.com/) (Optional, for containerized run)
+
+### 💻 Local Development
+
+1.  **Clone the repository**
+    ```bash
+    git clone https://github.com/iamOmarFaruk/go-server.git
+    cd go-server
+    ```
+
+2.  **Install Frontend Dependencies**
+    ```bash
+    npm install
+    ```
+
+3.  **Run the Application**
+    
+    *Option A: Using Makefile*
+    ```bash
+    # Terminal 1: Start Go Server
+    make run
+    
+    # Terminal 2: Start Vite (for frontend assets)
+    npm run dev
+    ```
+
+    *Option B: Docker (All-in-One)*
+    ```bash
+    docker compose up --build
+    ```
+
+4.  **Visit the App**
+    Open [http://localhost:8080](http://localhost:8080) to view the application.
+
+## 📂 Project Structure
 
 ```
-go-server/
-├── cmd/
-│   └── server/
-│       └── main.go              # Application entry point
-├── internal/
-│   ├── handlers/                # HTTP handlers (controllers)
-│   ├── services/               # Business logic
-│   └── models/                 # Data structures
-├── templates/                  # HTML templates
-├── static/                     # Static files (CSS, JS, images)
-├── Dockerfile                  # Container configuration
-├── docker-compose.yml          # Development workflow
-└── go.mod                      # Go module definition
+├── cmd/                # Application entry points
+├── internal/           # Private application code (Handlers, Middleware)
+├── templates/          # HTML templates (Pages, Layouts, Partials)
+├── static/             # Static assets (Compiled CSS/JS)
+├── src/                # Source frontend assets (Tailwind, JS)
+├── docker-compose.yml  # Docker configuration
+└── Makefile            # Command automation
 ```
 
-## Quick Start
+## 👥 Author
 
-### Using Docker (Recommended)
+<div align="center">
 
-1. **Build and run with Docker Compose:**
-   ```bash
-   docker-compose up --build
-   ```
+**Omar Faruk**
 
-2. **Access the application:**
-   - Open your browser and visit: http://localhost:8080
+[![GitHub](https://img.shields.io/badge/GitHub-iamOmarFaruk-181717?style=for-the-badge&logo=github)](https://github.com/iamOmarFaruk)
+[![Website](https://img.shields.io/badge/Website-omarfaruk.dev-blueviolet?style=for-the-badge)](https://omarfaruk.dev)
 
-3. **Stop the application:**
-   ```bash
-   docker-compose down
-   ```
+*Crafting robust software with a touch of elegance.*
 
-### Manual Setup (Requires Go 1.21+)
+</div>
 
-1. **Install dependencies:**
-   ```bash
-   go mod download
-   ```
+---
 
-2. **Run the application:**
-   ```bash
-   go run cmd/server/main.go
-   ```
-
-3. **Access the application:**
-   - Open your browser and visit: http://localhost:8080
-
-## Available Routes
-
-- `/` - Home page with hero section and features
-- `/about` - About page with company info and team
-- `/testimonials` - Testimonials page with client stories
-- `/health` - Health check endpoint
-- `/static/*` - Static files (CSS, JS, images)
-
-## Development
-
-### Adding New Pages
-
-1. **Create Model:** Add data structures in `internal/models/page.go`
-2. **Create Service:** Add business logic in `internal/services/page_service.go`
-3. **Create Handler:** Add HTTP handler in `internal/handlers/page_handler.go`
-4. **Create Template:** Add HTML template in `templates/`
-5. **Add Route:** Register the route in `cmd/server/main.go`
-
-### Hot Reload (Development)
-
-For hot reload during development, uncomment the volume mounts in `docker-compose.yml` and rebuild:
-
-```yaml
-volumes:
-  - .:/app
-  - /app/vendor
-```
-
-## Technologies Used
-
-- **Go 1.21** - Programming language
-- **Chi** - HTTP router
-- **html/template** - Template engine
-- **Docker** - Containerization
-- **Responsive CSS** - Modern styling
-
-## Deployment
-
-This application is designed for easy deployment on platforms like:
-- **Railway** - "Vercel for Go" with auto-deployment
-- **Render** - Simple PaaS with free tier
-- **Fly.io** - Edge-focused platform
-- **Any Docker-compatible platform**
-
-## Health Check
-
-The application includes a health check endpoint at `/health` that returns HTTP 200 status, making it suitable for load balancers and container orchestrators.
-
-## Security
-
-- Runs as non-root user in Docker container
-- Includes security headers via middleware
-- Input validation and proper error handling
-- Static files served with proper headers
-
-## Performance
-
-- Built with Go's performance and concurrency
-- Compression middleware for faster load times
-- Optimized Docker image with multi-stage build
-- Minimal runtime dependencies
+<!--
+ ┌── o m a r ──┐
+ │ gh@iamOmarFaruk
+ │ omarfaruk.dev
+ │ Created: 2025-12-21
+ │ Updated: 2025-12-21
+ └─ go-server ───┘
+-->
