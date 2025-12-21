@@ -1,5 +1,16 @@
 # Multi-stage build for Go web application
-FROM golang:1.21-alpine AS builder
+FROM golang:1.23-alpine AS dev
+WORKDIR /app
+RUN apk add --no-cache git
+RUN go install github.com/air-verse/air@v1.61.1
+COPY go.mod ./
+COPY go.su[m] ./
+RUN go mod download
+COPY . .
+RUN go mod tidy
+CMD ["air", "-c", ".air.toml"]
+
+FROM golang:1.23-alpine AS builder
 
 # Install git (for go modules)
 RUN apk add --no-cache git

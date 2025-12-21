@@ -5,7 +5,8 @@ type PageData struct {
 	Description string
 	CurrentPage string
 	CurrentYear int
-	ContentType  string  // home, about, testimonials, 404
+	ContentType string // home, about, testimonials, 404
+	IsDev       bool
 }
 
 type HomePageData struct {
@@ -71,8 +72,9 @@ type Course struct {
 
 type CoursesPageData struct {
 	PageData
-	Courses    []Course
-	Categories []string
+	Courses          []Course
+	Categories       []string
+	SelectedCategory string
 }
 
 /*

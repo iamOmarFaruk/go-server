@@ -3,78 +3,119 @@ package handlers
 import (
 	"html/template"
 	"net/http"
+	"os"
 	"strconv"
 	"strings"
 	"time"
 
+	"go-server/internal/models"
 	"go-server/internal/services"
 )
 
 type PageHandler struct {
 	pageService *services.PageService
 	templates   *template.Template
+	isDev       bool
 }
 
 func NewPageHandler(templatePath string) (*PageHandler, error) {
-	// Parse all templates - layout contains nav and footer includes
-	templates, err := template.ParseGlob(templatePath + "/*.html")
+	// Parse layout and partials
+	templates, err := template.ParseGlob(templatePath + "/layout.html")
+	if err != nil {
+		return nil, err
+	}
+	// Parse partials
+	_, err = templates.ParseGlob(templatePath + "/partials/*.html")
 	if err != nil {
 		return nil, err
 	}
 
+	isDev := os.Getenv("DEV_MODE") == "true"
+
 	return &PageHandler{
 		pageService: services.NewPageService(),
 		templates:   templates,
+		isDev:       isDev,
 	}, nil
 }
 
-func (h *PageHandler) Home(w http.ResponseWriter, r *http.Request) {
-	// Execute layout template with home page data
-	data := h.pageService.GetHomeData()
-	err := h.templates.ExecuteTemplate(w, "layout", data)
+func (h *PageHandler) render(w http.ResponseWriter, pageFile string, data interface{}) {
+	var tmpl *template.Template
+	var err error
+
+	if h.isDev {
+		// Re-parse everything in dev mode
+		tmpl, err = template.ParseFiles("templates/layout.html")
+		if err != nil {
+			http.Error(w, "Layout Parse Error: "+err.Error(), http.StatusInternalServerError)
+			return
+		}
+		_, err = tmpl.ParseGlob("templates/partials/*.html")
+		if err != nil {
+			http.Error(w, "Partials Parse Error: "+err.Error(), http.StatusInternalServerError)
+			return
+		}
+	} else {
+		// Clone the base templates (layout + partials)
+		tmpl, err = h.templates.Clone()
+		if err != nil {
+			http.Error(w, "Template Clone Error: "+err.Error(), http.StatusInternalServerError)
+			return
+		}
+	}
+
+	// Parse the specific page
+	_, err = tmpl.ParseFiles("templates/pages/" + pageFile)
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		http.Error(w, "Page Parse Error: "+err.Error(), http.StatusInternalServerError)
 		return
 	}
+
+	// Inject IsDev into data if it's a pointer to struct that has it, 
+    // or wrap it. For simplicity, we assume models have IsDev or we handle it.
+    // The previous code did `data.IsDev = h.isDev`. To keep that:
+    if pageData, ok := data.(*models.PageData); ok {
+        pageData.IsDev = h.isDev
+    } else if homeData, ok := data.(*models.HomePageData); ok {
+        homeData.IsDev = h.isDev
+    } else if coursesData, ok := data.(*models.CoursesPageData); ok {
+        coursesData.IsDev = h.isDev
+    } else if aboutData, ok := data.(*models.AboutPageData); ok {
+        aboutData.IsDev = h.isDev
+    } else if testData, ok := data.(*models.TestimonialPageData); ok {
+        testData.IsDev = h.isDev
+    }
+
+	err = tmpl.ExecuteTemplate(w, "layout", data)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+}
+
+func (h *PageHandler) Home(w http.ResponseWriter, r *http.Request) {
+	data := h.pageService.GetHomeData()
+	h.render(w, "home.html", &data)
 }
 
 func (h *PageHandler) About(w http.ResponseWriter, r *http.Request) {
-	// Execute layout template with about page data
 	data := h.pageService.GetAboutData()
-	err := h.templates.ExecuteTemplate(w, "layout", data)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
+	h.render(w, "about.html", &data)
 }
 
 func (h *PageHandler) Testimonials(w http.ResponseWriter, r *http.Request) {
-	// Execute layout template with testimonials page data
 	data := h.pageService.GetTestimonialData()
-	err := h.templates.ExecuteTemplate(w, "layout", data)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
+	h.render(w, "testimonials.html", &data)
 }
 
 func (h *PageHandler) Courses(w http.ResponseWriter, r *http.Request) {
-	// Execute layout template with courses page data
-	data := h.pageService.GetCoursesData()
-	err := h.templates.ExecuteTemplate(w, "layout", data)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
+	category := r.URL.Query().Get("category")
+	data := h.pageService.GetCoursesData(category)
+	h.render(w, "courses.html", &data)
 }
 
 func (h *PageHandler) AgeCheck(w http.ResponseWriter, r *http.Request) {
 	data := h.pageService.GetAgeCheckData()
-	err := h.templates.ExecuteTemplate(w, "layout", data)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
+	h.render(w, "age-check.html", data)
 }
 
 func (h *PageHandler) VerifyAge(w http.ResponseWriter, r *http.Request) {
@@ -83,17 +124,14 @@ func (h *PageHandler) VerifyAge(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Sanitize and validate input
 	ageStr := strings.TrimSpace(r.FormValue("age"))
 	age, err := strconv.Atoi(ageStr)
 	if err != nil {
-		// Invalid input, redirect back to age check
 		http.Redirect(w, r, "/age-check", http.StatusSeeOther)
 		return
 	}
 
 	if age >= 20 {
-		// Set cookie
 		cookie := &http.Cookie{
 			Name:     "age_verified",
 			Value:    "true",
@@ -110,29 +148,20 @@ func (h *PageHandler) VerifyAge(w http.ResponseWriter, r *http.Request) {
 
 func (h *PageHandler) AccessDenied(w http.ResponseWriter, r *http.Request) {
 	data := h.pageService.GetAccessDeniedData()
-	err := h.templates.ExecuteTemplate(w, "layout", data)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
+	h.render(w, "access-denied.html", data)
 }
 
 func (h *PageHandler) NotFound(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html")
 	w.WriteHeader(http.StatusNotFound)
 	
-	// Execute layout template with 404 page data
 	data := h.pageService.GetHomeData()
 	data.Title = "Page Not Found - 404 - Go Web App"
 	data.Description = "Oops! The page you're looking for doesn't exist."
 	data.CurrentPage = "404"
 	data.ContentType = "404"
 	
-	err := h.templates.ExecuteTemplate(w, "layout", data)
-	if err != nil {
-		http.Error(w, "404 page not found", http.StatusNotFound)
-		return
-	}
+	h.render(w, "404.html", &data.PageData)
 }
 
 /*
@@ -140,5 +169,6 @@ func (h *PageHandler) NotFound(w http.ResponseWriter, r *http.Request) {
  * │ @iamOmarFaruk
  * │ omarfaruk.dev
  * │ Touched: 2025-12-21
+ * │ Updated: 2025-12-21
  * └─ go-server ───┘
  */

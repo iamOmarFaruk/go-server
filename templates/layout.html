@@ -7,102 +7,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{.Title}}</title>
     <meta name="description" content="{{.Description}}">
-    <meta name="keywords" content="Go, Golang, web development, web applications, programming">
-    <meta name="author" content="Go Web Solutions">
 
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="{{.Title}}">
-    <meta property="og:description" content="{{.Description}}">
-    <meta property="og:type" content="website">
-    <meta property="og:url"
-        content="https://example.com{{if eq .CurrentPage `about`}}/about{{else if eq .CurrentPage `testimonials`}}/testimonials{{else}}/{{end}}">
-    <meta property="og:site_name" content="Go Web App">
-
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{.Title}}">
-    <meta name="twitter:description" content="{{.Description}}">
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/static/images/default-avatar.svg">
-    <link rel="icon" type="image/png" href="/static/images/default-avatar.svg">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="/static/css/style.css">
+    <!-- Vite Dev / Prod Assets -->
+    {{ if .IsDev }}
+    <script type="module" src="http://localhost:5173/@vite/client"></script>
+    <script type="module" src="http://localhost:5173/src/main.js"></script>
+    {{ else }}
+    <link rel="stylesheet" href="/static/dist/assets/main.css">
+    <script type="module" src="/static/dist/assets/main.js"></script>
+    {{ end }}
 </head>
 
-<body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-brand">
-                <a href="/">Go Web App</a>
-            </div>
-            <button class="nav-toggle" aria-label="Toggle navigation">
-                <span class="hamburger"></span>
-                <span class="hamburger"></span>
-                <span class="hamburger"></span>
-            </button>
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="/" class="nav-link {{if eq .CurrentPage `home` }}active{{end}}">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/about" class="nav-link {{if eq .CurrentPage `about` }}active{{end}}">About</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/courses" class="nav-link {{if eq .CurrentPage `courses` }}active{{end}}">Courses</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/testimonials"
-                        class="nav-link {{if eq .CurrentPage `testimonials` }}active{{end}}">Testimonials</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+<body class="bg-slate-50 min-h-screen flex flex-col">
+    {{template "navbar" .}}
 
-    <main>
+    <main class="flex-grow">
         {{template "content" .}}
     </main>
 
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Go Web App</h3>
-                    <p>Building fast, scalable web applications with Go</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/about">About</a></li>
-                        <li><a href="/courses">Courses</a></li>
-                        <li><a href="/testimonials">Testimonials</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Technologies</h4>
-                    <ul>
-                        <li>Go (Golang)</li>
-                        <li>Chi Router</li>
-                        <li>Docker</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; {{.CurrentYear}} Go Web App. Built with ❤️ and Go</p>
-            </div>
-        </div>
-    </footer>
+    {{template "footer" .}}
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const navToggle = document.querySelector('.nav-toggle');
-            const navMenu = document.querySelector('.nav-menu');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
 
-            if (navToggle && navMenu) {
-                navToggle.addEventListener('click', function () {
-                    navMenu.classList.toggle('nav-menu--open');
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function () {
+                    mobileMenu.classList.toggle('hidden');
                 });
             }
         });
@@ -111,3 +43,12 @@
 
 </html>
 {{end}}
+
+/*
+* ┌── o m a r ──┐
+* │ @iamOmarFaruk
+* │ omarfaruk.dev
+* │ Created: 2025-12-21
+* │ Updated: 2025-12-21
+* └─ go-server ───┘
+*/

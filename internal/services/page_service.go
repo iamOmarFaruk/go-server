@@ -122,7 +122,88 @@ func (s *PageService) GetTestimonialData() *models.TestimonialPageData {
 	}
 }
 
-func (s *PageService) GetCoursesData() *models.CoursesPageData {
+func (s *PageService) GetCoursesData(category string) *models.CoursesPageData {
+	allCourses := []models.Course{
+		{
+			Title:       "Go Fundamentals",
+			Description: "Master the basics of Go programming language from scratch. Learn syntax, data types, functions, and more.",
+			Instructor:  "Alex Johnson",
+			Duration:    "12 hours",
+			Level:       "Beginner",
+			Price:       "$49",
+			ImageURL:    "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=400&h=250&fit=crop",
+			Category:    "Go",
+			Students:    1245,
+		},
+		{
+			Title:       "Advanced Go Patterns",
+			Description: "Deep dive into advanced Go patterns, concurrency, channels, and best practices for production code.",
+			Instructor:  "Sarah Chen",
+			Duration:    "18 hours",
+			Level:       "Advanced",
+			Price:       "$89",
+			ImageURL:    "https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=400&h=250&fit=crop",
+			Category:    "Go",
+			Students:    876,
+		},
+		{
+			Title:       "Building REST APIs with Go",
+			Description: "Learn to build production-ready RESTful APIs using Go, Chi router, and PostgreSQL.",
+			Instructor:  "Mike Rodriguez",
+			Duration:    "15 hours",
+			Level:       "Intermediate",
+			Price:       "$69",
+			ImageURL:    "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=250&fit=crop",
+			Category:    "Backend",
+			Students:    1532,
+		},
+		{
+			Title:       "Docker & Kubernetes for Go Devs",
+			Description: "Containerize your Go applications and deploy them to Kubernetes clusters with confidence.",
+			Instructor:  "Alex Johnson",
+			Duration:    "20 hours",
+			Level:       "Intermediate",
+			Price:       "$79",
+			ImageURL:    "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=400&h=250&fit=crop",
+			Category:    "DevOps",
+			Students:    943,
+		},
+		{
+			Title:       "Full-Stack Go with HTMX",
+			Description: "Build modern, interactive web applications using Go templates and HTMX without JavaScript.",
+			Instructor:  "Sarah Chen",
+			Duration:    "14 hours",
+			Level:       "Intermediate",
+			Price:       "$59",
+			ImageURL:    "https://images.unsplash.com/photo-1547658719-da2b51169166?w=400&h=250&fit=crop",
+			Category:    "Web Development",
+			Students:    687,
+		},
+		{
+			Title:       "Microservices with Go",
+			Description: "Design and implement microservices architecture using Go, gRPC, and message queues.",
+			Instructor:  "Mike Rodriguez",
+			Duration:    "22 hours",
+			Level:       "Advanced",
+			Price:       "$99",
+			ImageURL:    "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=250&fit=crop",
+			Category:    "Backend",
+			Students:    1087,
+		},
+	}
+
+	var filteredCourses []models.Course
+	if category == "" || category == "All" {
+		filteredCourses = allCourses
+		category = "All"
+	} else {
+		for _, course := range allCourses {
+			if course.Category == category {
+				filteredCourses = append(filteredCourses, course)
+			}
+		}
+	}
+
 	return &models.CoursesPageData{
 		PageData: models.PageData{
 			Title:       "Courses - Go Web App",
@@ -131,75 +212,9 @@ func (s *PageService) GetCoursesData() *models.CoursesPageData {
 			CurrentYear: time.Now().Year(),
 			ContentType: "courses",
 		},
-		Categories: []string{"All", "Go", "Web Development", "DevOps", "Backend"},
-		Courses: []models.Course{
-			{
-				Title:       "Go Fundamentals",
-				Description: "Master the basics of Go programming language from scratch. Learn syntax, data types, functions, and more.",
-				Instructor:  "Alex Johnson",
-				Duration:    "12 hours",
-				Level:       "Beginner",
-				Price:       "$49",
-				ImageURL:    "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=400&h=250&fit=crop",
-				Category:    "Go",
-				Students:    1245,
-			},
-			{
-				Title:       "Advanced Go Patterns",
-				Description: "Deep dive into advanced Go patterns, concurrency, channels, and best practices for production code.",
-				Instructor:  "Sarah Chen",
-				Duration:    "18 hours",
-				Level:       "Advanced",
-				Price:       "$89",
-				ImageURL:    "https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=400&h=250&fit=crop",
-				Category:    "Go",
-				Students:    876,
-			},
-			{
-				Title:       "Building REST APIs with Go",
-				Description: "Learn to build production-ready RESTful APIs using Go, Chi router, and PostgreSQL.",
-				Instructor:  "Mike Rodriguez",
-				Duration:    "15 hours",
-				Level:       "Intermediate",
-				Price:       "$69",
-				ImageURL:    "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=250&fit=crop",
-				Category:    "Backend",
-				Students:    1532,
-			},
-			{
-				Title:       "Docker & Kubernetes for Go Devs",
-				Description: "Containerize your Go applications and deploy them to Kubernetes clusters with confidence.",
-				Instructor:  "Alex Johnson",
-				Duration:    "20 hours",
-				Level:       "Intermediate",
-				Price:       "$79",
-				ImageURL:    "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=400&h=250&fit=crop",
-				Category:    "DevOps",
-				Students:    943,
-			},
-			{
-				Title:       "Full-Stack Go with HTMX",
-				Description: "Build modern, interactive web applications using Go templates and HTMX without JavaScript.",
-				Instructor:  "Sarah Chen",
-				Duration:    "14 hours",
-				Level:       "Intermediate",
-				Price:       "$59",
-				ImageURL:    "https://images.unsplash.com/photo-1547658719-da2b51169166?w=400&h=250&fit=crop",
-				Category:    "Web Development",
-				Students:    687,
-			},
-			{
-				Title:       "Microservices with Go",
-				Description: "Design and implement microservices architecture using Go, gRPC, and message queues.",
-				Instructor:  "Mike Rodriguez",
-				Duration:    "22 hours",
-				Level:       "Advanced",
-				Price:       "$99",
-				ImageURL:    "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=250&fit=crop",
-				Category:    "Backend",
-				Students:    1087,
-			},
-		},
+		Categories:       []string{"All", "Go", "Web Development", "DevOps", "Backend"},
+		Courses:          filteredCourses,
+		SelectedCategory: category,
 	}
 }
 

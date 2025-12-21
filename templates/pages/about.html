@@ -1,0 +1,68 @@
+{{define "content"}}
+<!-- Page Header with Background -->
+<div class="relative bg-slate-900 py-32">
+    <div class="absolute inset-0">
+        <img src="https://images.unsplash.com/photo-1522071823991-b9671f99118f?w=1920&q=80" alt="About"
+            class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-[2px]"></div>
+    </div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+        <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">About {{.CompanyName}}</h1>
+        <p class="mt-6 text-xl text-slate-200 max-w-3xl mx-auto italic">{{.Mission}}</p>
+    </div>
+</div>
+
+<section class="py-24 bg-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row gap-16 items-center">
+            <div class="lg:w-1/2">
+                <h2 class="text-3xl font-bold text-slate-900 mb-6">Our Journey</h2>
+                <p class="text-lg text-slate-600 leading-relaxed mb-6">{{.CompanyStory}}</p>
+                <p class="text-lg text-slate-600 leading-relaxed">Founded in {{.FoundedYear}}, we've been at the
+                    forefront of the Go movement.</p>
+            </div>
+            <div class="lg:w-1/2 grid grid-cols-2 gap-4">
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=400&fit=crop"
+                    class="rounded-2xl shadow-lg" alt="Office">
+                <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=400&h=400&fit=crop"
+                    class="rounded-2xl shadow-lg mt-8" alt="Team Work">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Team Section -->
+<section class="py-24 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-extrabold text-slate-900">Meet Our Team</h2>
+            <p class="mt-4 text-xl text-slate-500">The brilliant minds behind the code.</p>
+        </div>
+        <div class="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3">
+            {{range .TeamMembers}}
+            <div
+                class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-md transition-shadow">
+                <div class="h-64 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop"
+                        alt="{{.Name}}" class="w-full h-full object-cover">
+                </div>
+                <div class="p-8">
+                    <h3 class="text-xl font-bold text-slate-900">{{.Name}}</h3>
+                    <p class="text-primary-600 font-medium mb-4">{{.Role}}</p>
+                    <p class="text-slate-500 text-sm italic">{{.Bio}}</p>
+                </div>
+            </div>
+            {{end}}
+        </div>
+    </div>
+</section>
+{{end}}
+
+/*
+* ┌── o m a r ──┐
+* │ @iamOmarFaruk
+* │ omarfaruk.dev
+* │ Created: 2025-12-21
+* │ Updated: 2025-12-21
+* └─ go-server ───┘
+*/

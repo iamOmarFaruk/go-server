@@ -5,6 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      target: dev
     ports:
       - "8080:8080"
     environment:
@@ -13,9 +14,6 @@ services:
     volumes:
       # Mount source code for development
       - .:/app
-      - /app/vendor
+      - /app/tmp
     restart: unless-stopped
     container_name: go-web-app-dev
-    working_dir: /app
-    # Override the command for development
-    command: ["go", "run", "cmd/server/main.go"]

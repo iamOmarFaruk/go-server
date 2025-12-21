@@ -1,0 +1,57 @@
+{{define "content"}}
+<!-- Hero Section -->
+<div class="relative bg-slate-900 overflow-hidden">
+    <div class="absolute inset-0">
+        <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=1920&q=80" alt="Background"
+            class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-slate-900/70 mix-blend-multiply"></div>
+    </div>
+    <div class="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
+        <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">{{.HeroTitle}}</h1>
+        <p class="mt-6 text-xl text-slate-300 max-w-3xl">{{.HeroSubtitle}}</p>
+        <div class="mt-10 flex space-x-4">
+            <a href="/courses"
+                class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary-600 hover:bg-primary-700 transition-colors">
+                Explore Courses
+            </a>
+            <a href="/about"
+                class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-colors">
+                Learn More
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Features -->
+<section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <h2 class="text-base font-semibold text-primary-600 tracking-wide uppercase">Why Choose Go?</h2>
+            <p class="mt-2 text-3xl font-extrabold text-slate-900 sm:text-4xl">The future of backend development</p>
+        </div>
+        <div class="mt-20">
+            <div class="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3">
+                {{range .Features}}
+                <div class="group">
+                    <div
+                        class="flex items-center justify-center h-12 w-12 rounded-md bg-primary-100 text-primary-600 mb-6 group-hover:bg-primary-600 group-hover:text-white transition-colors duration-300 shadow-sm">
+                        <span class="text-2xl">{{.Icon}}</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">{{.Title}}</h3>
+                    <p class="text-slate-600 leading-relaxed">{{.Description}}</p>
+                </div>
+                {{end}}
+            </div>
+        </div>
+    </div>
+</section>
+{{end}}
+
+/*
+* ┌── o m a r ──┐
+* │ @iamOmarFaruk
+* │ omarfaruk.dev
+* │ Created: 2025-12-21
+* │ Updated: 2025-12-21
+* └─ go-server ───┘
+*/

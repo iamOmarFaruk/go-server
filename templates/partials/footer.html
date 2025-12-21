@@ -1,0 +1,43 @@
+{{define "footer"}}
+<footer class="bg-white border-t border-slate-200">
+    <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div>
+                <h3 class="text-sm font-semibold text-slate-900 tracking-wider uppercase">Go Web App</h3>
+                <p class="mt-4 text-base text-slate-500">Building fast, scalable web applications with Go and modern
+                    frontend tools.</p>
+            </div>
+            <div>
+                <h3 class="text-sm font-semibold text-slate-900 tracking-wider uppercase">Quick Links</h3>
+                <ul class="mt-4 space-y-4">
+                    <li><a href="/" class="text-base text-slate-500 hover:text-slate-900">Home</a></li>
+                    <li><a href="/about" class="text-base text-slate-500 hover:text-slate-900">About</a></li>
+                    <li><a href="/courses" class="text-base text-slate-500 hover:text-slate-900">Courses</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-sm font-semibold text-slate-900 tracking-wider uppercase">Technologies</h3>
+                <ul class="mt-4 space-y-4">
+                    <li class="text-base text-slate-500">Go (Golang)</li>
+                    <li class="text-base text-slate-500">Tailwind CSS</li>
+                    <li class="text-base text-slate-500">Vite & PostCSS</li>
+                </ul>
+            </div>
+        </div>
+        <div class="mt-8 border-t border-slate-200 pt-8">
+            <p class="text-base text-slate-400 text-center">
+                &copy; {{.CurrentYear}} Go Web App. Built with ❤️ by Omar Faruk.
+            </p>
+        </div>
+    </div>
+</footer>
+{{end}}
+
+/*
+* ┌── o m a r ──┐
+* │ @iamOmarFaruk
+* │ omarfaruk.dev
+* │ Created: 2025-12-21
+* │ Updated: 2025-12-21
+* └─ go-server ───┘
+*/

@@ -1,0 +1,61 @@
+{{define "content"}}
+<!-- Header -->
+<div class="relative bg-slate-900 py-32">
+    <div class="absolute inset-0">
+        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1920&q=80" alt="Testimonials"
+            class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-primary-900/60 mix-blend-multiply"></div>
+    </div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+        <h1 class="text-4xl font-extrabold sm:text-5xl">Client Testimonials</h1>
+        <p class="mt-4 text-xl text-slate-100 italic">Success stories from around the globe</p>
+    </div>
+</div>
+
+<!-- Stats -->
+<section class="relative -mt-16 z-10 px-4">
+    <div class="max-w-7xl mx-auto">
+        <div
+            class="bg-white rounded-3xl shadow-xl overflow-hidden grid grid-cols-2 md:grid-cols-4 divide-x divide-y divide-slate-100 border border-slate-100">
+            {{range .Stats}}
+            <div class="p-10 text-center">
+                <div class="text-3xl font-bold text-primary-600">{{.Number}}</div>
+                <div class="text-sm font-medium text-slate-500 mt-2 uppercase tracking-widest">{{.Label}}</div>
+            </div>
+            {{end}}
+        </div>
+    </div>
+</section>
+
+<!-- Grid -->
+<section class="py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {{range .Testimonials}}
+            <div
+                class="bg-slate-50 p-8 rounded-3xl border border-slate-100 hover:bg-white hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                <div class="flex items-center gap-4 mb-6">
+                    <img src="https://i.pravatar.cc/100?u={{.Name}}"
+                        class="h-14 w-14 rounded-full border-2 border-white shadow-sm" alt="{{.Name}}">
+                    <div>
+                        <h4 class="font-bold text-slate-900">{{.Name}}</h4>
+                        <p class="text-xs text-slate-500 uppercase tracking-tighter">{{.Role}} at {{.Company}}</p>
+                    </div>
+                </div>
+                <p class="text-slate-600 italic leading-relaxed mb-6">"{{.Content}}"</p>
+                <div class="text-yellow-400 text-sm">★★★★★</div>
+            </div>
+            {{end}}
+        </div>
+    </div>
+</section>
+{{end}}
+
+/*
+* ┌── o m a r ──┐
+* │ @iamOmarFaruk
+* │ omarfaruk.dev
+* │ Created: 2025-12-21
+* │ Updated: 2025-12-21
+* └─ go-server ───┘
+*/
