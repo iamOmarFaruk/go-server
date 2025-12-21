@@ -1,0 +1,36 @@
+{{define "about-content"}}
+<div class="page-header">
+    <div class="container">
+        <h1>About {{.CompanyName}}</h1>
+        <p class="page-subtitle">{{.Mission}}</p>
+    </div>
+</div>
+
+<section class="about-story">
+    <div class="container">
+        <div class="story-content">
+            <h2>Our Story</h2>
+            <p>{{.CompanyStory}}</p>
+            <p>Founded in {{.FoundedYear}}, we've been at the forefront of Go web development, helping companies build scalable, high-performance applications that stand the test of time.</p>
+        </div>
+    </div>
+</section>
+
+<section class="team">
+    <div class="container">
+        <h2>Meet Our Team</h2>
+        <div class="team-grid">
+            {{range .TeamMembers}}
+            <div class="team-member">
+                <div class="member-avatar">
+                    <img src="{{.ImageURL}}" alt="{{.Name}}" onerror="this.src='/static/images/default-avatar.svg'">
+                </div>
+                <h3 class="member-name">{{.Name}}</h3>
+                <p class="member-role">{{.Role}}</p>
+                <p class="member-bio">{{.Bio}}</p>
+            </div>
+            {{end}}
+        </div>
+    </div>
+</section>
+{{end}}

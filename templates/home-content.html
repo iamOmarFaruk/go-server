@@ -1,0 +1,23 @@
+{{define "home-content"}}
+<div class="hero">
+    <div class="hero-container">
+        <h1 class="hero-title">{{.HeroTitle}}</h1>
+        <p class="hero-subtitle">{{.HeroSubtitle}}</p>
+    </div>
+</div>
+
+<section class="features">
+    <div class="container">
+        <h2 class="section-title">Why Choose Go?</h2>
+        <div class="features-grid">
+            {{range .Features}}
+            <div class="feature-card">
+                <div class="feature-icon">{{.Icon}}</div>
+                <h3 class="feature-title">{{.Title}}</h3>
+                <p class="feature-description">{{.Description}}</p>
+            </div>
+            {{end}}
+        </div>
+    </div>
+</section>
+{{end}}
