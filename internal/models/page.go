@@ -4,6 +4,7 @@ type PageData struct {
 	Title       string
 	Description string
 	CurrentPage string
+	CurrentYear int
 }
 
 type HomePageData struct {

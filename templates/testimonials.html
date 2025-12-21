@@ -62,7 +62,11 @@
                                 <h3 class="testimonial-name">{{.Name}}</h3>
                                 <p class="testimonial-role">{{.Role}} at {{.Company}}</p>
                                 <div class="testimonial-rating">
-                                    {{range $i := .Rating}}⭐{{end}}
+                                    {{if eq .Rating 5}}⭐⭐⭐⭐⭐{{end}}
+                                    {{if eq .Rating 4}}⭐⭐⭐⭐{{end}}
+                                    {{if eq .Rating 3}}⭐⭐⭐{{end}}
+                                    {{if eq .Rating 2}}⭐⭐{{end}}
+                                    {{if eq .Rating 1}}⭐{{end}}
                                 </div>
                             </div>
                         </div>
@@ -101,7 +105,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Go Web App. Built with ❤️ and Go</p>
+                <p>&copy; {{.CurrentYear}} Go Web App. Built with ❤️ and Go</p>
             </div>
         </div>
     </footer>

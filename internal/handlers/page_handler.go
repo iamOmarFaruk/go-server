@@ -3,6 +3,7 @@ package handlers
 import (
 	"html/template"
 	"net/http"
+	"time"
 
 	"go-server/internal/services"
 )
@@ -80,7 +81,20 @@ func (h *PageHandler) Testimonials(w http.ResponseWriter, r *http.Request) {
 func (h *PageHandler) NotFound(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html")
 	w.WriteHeader(http.StatusNotFound)
-	err := h.templates["404"].Execute(w, nil)
+	
+	data := struct{
+		Title       string
+		Description string
+		CurrentPage string
+		CurrentYear int
+	}{
+		Title:       "Page Not Found - 404 - Go Web App",
+		Description: "Oops! The page you're looking for doesn't exist.",
+		CurrentPage: "404",
+		CurrentYear: time.Now().Year(),
+	}
+	
+	err := h.templates["404"].Execute(w, data)
 	if err != nil {
 		http.Error(w, "404 page not found", http.StatusNotFound)
 		return

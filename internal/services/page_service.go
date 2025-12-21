@@ -1,6 +1,7 @@
 package services
 
 import (
+	"time"
 	"go-server/internal/models"
 )
 
@@ -16,6 +17,7 @@ func (s *PageService) GetHomeData() *models.HomePageData {
 			Title:       "Home - Go Web App",
 			Description: "Welcome to our amazing Go web application",
 			CurrentPage: "home",
+			CurrentYear: time.Now().Year(),
 		},
 		HeroTitle:    "Welcome to Go Web Development",
 		HeroSubtitle: "Building fast, scalable web applications with Go",
@@ -45,6 +47,7 @@ func (s *PageService) GetAboutData() *models.AboutPageData {
 			Title:       "About Us - Go Web App",
 			Description: "Learn more about our company and team",
 			CurrentPage: "about",
+			CurrentYear: time.Now().Year(),
 		},
 		CompanyName:  "Go Web Solutions",
 		CompanyStory: "We are passionate about building high-performance web applications using Go. Our team combines expertise in modern web development with deep knowledge of Go's ecosystem to deliver exceptional solutions.",
@@ -79,6 +82,7 @@ func (s *PageService) GetTestimonialData() *models.TestimonialPageData {
 			Title:       "Testimonials - Go Web App",
 			Description: "What our clients say about our Go web development services",
 			CurrentPage: "testimonials",
+			CurrentYear: time.Now().Year(),
 		},
 		Testimonials: []models.Testimonial{
 			{
