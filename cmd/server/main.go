@@ -49,6 +49,7 @@ func main() {
 	r.Get("/", pageHandler.Home)
 	r.Get("/about", pageHandler.About)
 	r.Get("/testimonials", pageHandler.Testimonials)
+	r.Get("/courses", pageHandler.Courses)
 	
 	// 404 handler - must be last
 	r.NotFound(pageHandler.NotFound)

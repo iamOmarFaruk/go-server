@@ -55,6 +55,16 @@ func (h *PageHandler) Testimonials(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func (h *PageHandler) Courses(w http.ResponseWriter, r *http.Request) {
+	// Execute layout template with courses page data
+	data := h.pageService.GetCoursesData()
+	err := h.templates.ExecuteTemplate(w, "layout", data)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+}
+
 func (h *PageHandler) NotFound(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html")
 	w.WriteHeader(http.StatusNotFound)

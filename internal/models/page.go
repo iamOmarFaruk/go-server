@@ -57,6 +57,24 @@ type Stat struct {
 	Label  string
 }
 
+type Course struct {
+	Title       string
+	Description string
+	Instructor  string
+	Duration    string
+	Level       string
+	Price       string
+	ImageURL    string
+	Category    string
+	Students    int
+}
+
+type CoursesPageData struct {
+	PageData
+	Courses    []Course
+	Categories []string
+}
+
 /*
  * ┌── o m a r ──┐
  * │ @iamOmarFaruk
