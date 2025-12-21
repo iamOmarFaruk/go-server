@@ -58,6 +58,20 @@ type Stat struct {
 	Label  string
 }
 
+type Story struct {
+	Title    string
+	Author   string
+	Location string
+	Category string
+	Content  string
+	ImageURL string
+}
+
+type StoriesPageData struct {
+	PageData
+	Stories []Story
+}
+
 type Course struct {
 	Title       string
 	Description string

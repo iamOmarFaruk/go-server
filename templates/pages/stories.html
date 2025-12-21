@@ -1,0 +1,115 @@
+{{define "content"}}
+<!-- Hero Section -->
+<div class="relative bg-stone-900 h-[60vh] flex items-center overflow-hidden">
+    <div class="absolute inset-0">
+        <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1920&q=80" alt="Travel Hero"
+            class="w-full h-full object-cover opacity-60">
+        <div class="absolute inset-0 bg-gradient-to-t from-stone-900 via-stone-900/40 to-transparent"></div>
+    </div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+        <h1 class="text-5xl md:text-7xl font-display font-bold mb-6 tracking-tight">Wanderlust Chronicles</h1>
+        <p class="mt-4 text-xl md:text-2xl text-stone-200 max-w-2xl mx-auto font-light">Discover the world's most
+            breathtaking destinations through the eyes of fellow travelers.</p>
+        <div class="mt-10">
+            <a href="#stories"
+                class="inline-flex items-center px-8 py-3 border border-transparent text-base font-bold rounded-full text-stone-900 bg-emerald-400 hover:bg-emerald-500 transition-colors duration-300">
+                Explore Stories
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Stories Grid -->
+<section id="stories" class="py-24 bg-background-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Filter/Tabs (Visual only for now) -->
+        <div class="flex flex-wrap justify-center gap-4 mb-16">
+            <button
+                class="px-6 py-2 rounded-full bg-stone-900 text-white font-bold shadow-lg hover:bg-stone-800 transition-colors">All
+                Stories</button>
+            <button
+                class="px-6 py-2 rounded-full bg-white text-stone-600 font-bold hover:bg-stone-100 hover:text-stone-900 transition-colors">Adventure</button>
+            <button
+                class="px-6 py-2 rounded-full bg-white text-stone-600 font-bold hover:bg-stone-100 hover:text-stone-900 transition-colors">Relaxation</button>
+            <button
+                class="px-6 py-2 rounded-full bg-white text-stone-600 font-bold hover:bg-stone-100 hover:text-stone-900 transition-colors">Culture</button>
+            <button
+                class="px-6 py-2 rounded-full bg-white text-stone-600 font-bold hover:bg-stone-100 hover:text-stone-900 transition-colors">Food</button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {{range .Stories}}
+            <!-- Card -->
+            <div
+                class="group relative aspect-[3/4] rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer">
+                <!-- Background Image -->
+                <img src="{{.ImageURL}}" alt="{{.Title}}"
+                    class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+
+                <!-- Gradient Overlay -->
+                <div
+                    class="absolute inset-0 bg-gradient-to-t from-stone-900 via-stone-900/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300">
+                </div>
+
+                <!-- Content Overlay -->
+                <div class="absolute inset-0 p-8 flex flex-col justify-end">
+                    <!-- Location Badge -->
+                    <div class="absolute top-8 left-8">
+                        <span
+                            class="inline-flex items-center px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-sm font-bold tracking-wide uppercase">
+                            <svg class="w-4 h-4 mr-1.5 text-emerald-400" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            {{.Location}}
+                        </span>
+                    </div>
+
+                    <!-- Text Content -->
+                    <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                        <div class="text-emerald-400 text-sm font-bold mb-2 tracking-wider uppercase">{{.Category}}
+                        </div>
+                        <h3
+                            class="text-2xl font-display font-bold text-white mb-3 leading-tight group-hover:text-emerald-300 transition-colors">
+                            {{.Title}}</h3>
+                        <p
+                            class="text-stone-300 text-sm line-clamp-2 mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                            {{.Content}}</p>
+
+                        <!-- Author -->
+                        <div class="flex items-center gap-3">
+                            <img src="https://i.pravatar.cc/100?u={{.Author}}" alt="{{.Author}}"
+                                class="w-10 h-10 rounded-full border-2 border-emerald-500">
+                            <div>
+                                <p class="text-white text-sm font-bold">{{.Author}}</p>
+                                <p class="text-stone-400 text-xs">Read Story →</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{end}}
+        </div>
+
+        <!-- Load More -->
+        <div class="mt-16 text-center">
+            <button
+                class="inline-flex items-center px-8 py-3 border-2 border-stone-200 text-base font-bold rounded-full text-stone-600 hover:border-emerald-500 hover:text-emerald-600 transition-colors duration-300">
+                Load More Chronicles
+            </button>
+        </div>
+    </div>
+</section>
+{{end}}
+
+/*
+* ┌── o m a r ──┐
+* │ @iamOmarFaruk
+* │ omarfaruk.dev
+* │ Created: 2025-12-21
+* │ Updated: 2025-12-21
+* └─ go-server ───┘
+*/

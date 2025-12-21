@@ -22,14 +22,14 @@ deps: ## Download Go dependencies
 	go mod tidy
 
 run: ## Run the application locally
-	go run cmd/server/main.go
+	DEV_MODE=true go run cmd/server/main.go
 
 dev: ## Run the application with hot reload (requires air)
 	@if ! command -v air &> /dev/null; then \
 		echo "Installing air for hot reload..."; \
 		go install github.com/cosmtrek/air@latest; \
 	fi
-	air
+	DEV_MODE=true air
 
 test: ## Run tests
 	go test -v ./...

@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   app:
     build:
@@ -11,6 +9,7 @@ services:
     environment:
       - PORT=8080
       - GIN_MODE=debug
+      - DEV_MODE=true
     volumes:
       # Mount source code for development
       - .:/app

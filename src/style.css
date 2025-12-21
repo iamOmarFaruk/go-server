@@ -1,1 +1,58 @@
 @import "tailwindcss";
+
+/* Content sources for Tailwind to scan */
+@source "../templates/**/*.html";
+@source "../internal/services/**/*.go";
+
+/* Theme configuration */
+@theme {
+    /* Primary colors (Emerald) */
+    --color-primary-50: #ecfdf5;
+    --color-primary-100: #d1fae5;
+    --color-primary-200: #a7f3d0;
+    --color-primary-300: #6ee7b7;
+    --color-primary-400: #34d399;
+    --color-primary-500: #10b981;
+    --color-primary-600: #059669;
+    --color-primary-700: #047857;
+    --color-primary-800: #065f46;
+    --color-primary-900: #064e3b;
+    --color-primary-950: #022c22;
+
+    /* Secondary colors (Sky) */
+    --color-secondary-50: #f0f9ff;
+    --color-secondary-100: #e0f2fe;
+    --color-secondary-200: #bae6fd;
+    --color-secondary-300: #7dd3fc;
+    --color-secondary-400: #38bdf8;
+    --color-secondary-500: #0ea5e9;
+    --color-secondary-600: #0284c7;
+    --color-secondary-700: #0369a1;
+    --color-secondary-800: #075985;
+    --color-secondary-900: #0c4a6e;
+
+    /* Background colors (Stone) */
+    --color-background-50: #fafaf9;
+    --color-background-100: #f5f5f4;
+    --color-background-200: #e7e5e4;
+    --color-background-300: #d6d3d1;
+    --color-background-400: #a8a29e;
+    --color-background-500: #78716c;
+    --color-background-600: #57534e;
+    --color-background-700: #44403c;
+    --color-background-800: #292524;
+    --color-background-900: #1c1917;
+
+    /* Font families */
+    --font-sans: 'Quicksand', sans-serif;
+    --font-display: 'Nunito', sans-serif;
+}
+
+/*
+ * ┌── o m a r ──┐
+ * │ gh@iamOmarFaruk
+ * │ omarfaruk.dev
+ * │ Created: 2025-12-21
+ * │ Updated: 2025-12-21
+ * └─ go-server ───┘
+ */

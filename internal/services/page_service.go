@@ -237,7 +237,67 @@ func (s *PageService) GetAccessDeniedData() *models.PageData {
 		ContentType: "access-denied",
 	}
 }
-
+func (s *PageService) GetStoriesData() *models.StoriesPageData {
+	return &models.StoriesPageData{
+		PageData: models.PageData{
+			Title:       "Travel Stories - Wanderlust",
+			Description: "Read inspiring travel stories from around the globe.",
+			CurrentPage: "stories",
+			CurrentYear: time.Now().Year(),
+			ContentType: "stories",
+		},
+		Stories: []models.Story{
+			{
+				Title:    "Hidden Gems of Kyoto",
+				Author:   "Yuki Tanaka",
+				Location: "Kyoto, Japan",
+				Category: "Culture",
+				Content:  "Wandering through the bamboo groves of Arashiyama early in the morning, exploring centuries-old temples, and discovering the quiet beauty of Kyoto's traditional tea houses...",
+				ImageURL: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=80",
+			},
+			{
+				Title:    "Santorini Sunsets",
+				Author:   "Elena Costa",
+				Location: "Santorini, Greece",
+				Category: "Relaxation",
+				Content:  "The white-washed buildings clinging to the cliffside, the deep blue of the Aegean Sea, and the most magical sunset I have ever witnessed from Oia...",
+				ImageURL: "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=800&q=80",
+			},
+			{
+				Title:    "Trekking Patagonia",
+				Author:   "Mark Stevens",
+				Location: "Patagonia, Chile",
+				Category: "Adventure",
+				Content:  "Battling the winds at the base of the Torres del Paine, seeing glaciers calve into turquoise lakes, and feeling the raw power of nature at the end of the world...",
+				ImageURL: "https://images.unsplash.com/photo-1518182170546-07fb61429c2f?w=800&q=80",
+			},
+			{
+				Title:    "Culinary Journey in Rome",
+				Author:   "Sofia Romano",
+				Location: "Rome, Italy",
+				Category: "Food",
+				Content:  "From the perfect carbonara in Trastevere to the best gelato near the Pantheon. A journey through the eternal city, one bite at a time...",
+				ImageURL: "https://images.unsplash.com/photo-1529260830199-42c42dda5f3d?w=800&q=80",
+			},
+			{
+				Title:    "Northern Lights",
+				Author:   "Erik Larson",
+				Location: "Tromsø, Norway",
+				Category: "Adventure",
+				Content:  "Chasing the Aurora Borealis through the frozen landscapes of the Arctic Circle, dog sledding under the stars, and experiencing the magic of polar nights...",
+				ImageURL: "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=800&q=80",
+			},
+			{
+				Title:    "Temples of Angkor",
+				Author:   "Linh Nguyen",
+				Location: "Siem Reap, Cambodia",
+				Category: "Culture",
+				Content:  "Watching the sunrise over Angkor Wat, exploring the jungle-claimed ruins of Ta Prohm, and feeling the ancient history of the Khmer Empire...",
+				ImageURL: "https://images.unsplash.com/photo-1569668723429-9fb4119debe9?w=800&q=80",
+			},
+		},
+	}
+}
 /*
  * ┌── o m a r ──┐
  * │ @iamOmarFaruk

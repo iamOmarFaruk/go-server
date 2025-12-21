@@ -1,64 +1,70 @@
 {{define "navbar"}}
-<nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
+<nav class="bg-white/80 backdrop-blur-md border-b border-stone-100 sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
+        <div class="flex justify-between h-20">
             <div class="flex-shrink-0 flex items-center">
                 <a href="/" class="flex items-center gap-2.5 group">
                     <!-- Icon -->
                     <div
-                        class="p-1.5 bg-blue-600 rounded-lg text-white group-hover:bg-blue-700 transition-colors duration-300">
+                        class="p-2 bg-primary-600 rounded-xl text-white group-hover:bg-primary-700 transition-colors duration-300 shadow-lg shadow-primary-500/20">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                     </div>
                     <!-- Text -->
                     <span
-                        class="text-2xl font-bold tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors duration-300">
-                        GoNexus
+                        class="text-2xl font-display font-bold tracking-tight text-stone-800 group-hover:text-primary-600 transition-colors duration-300">
+                        Wanderlust
                     </span>
                 </a>
             </div>
 
             <!-- Desktop Menu -->
-            <div class="hidden sm:flex sm:items-center sm:space-x-8">
+            <div class="hidden sm:flex sm:items-center sm:space-x-10">
                 <!-- Nav Item: Home -->
                 <a href="/"
-                    class="relative group inline-flex items-center px-1 pt-1 text-sm font-medium text-slate-700 hover:text-blue-600 transition-colors duration-200">
+                    class="relative group inline-flex items-center px-2 pt-1 text-base font-bold text-stone-600 hover:text-primary-600 transition-colors duration-200">
                     <span>Home</span>
                     <span
-                        class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left {{if eq .CurrentPage `home` }}scale-x-100{{end}}"></span>
+                        class="absolute -bottom-1 left-0 w-full h-0.5 bg-primary-500 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left {{if eq .CurrentPage `home` }}scale-x-100{{end}}"></span>
+                </a>
+
+                <!-- Nav Item: Stories -->
+                <a href="/stories"
+                    class="relative group inline-flex items-center px-2 pt-1 text-base font-bold text-stone-600 hover:text-primary-600 transition-colors duration-200">
+                    <span>Stories</span>
+                    <span
+                        class="absolute -bottom-1 left-0 w-full h-0.5 bg-primary-500 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left {{if eq .CurrentPage `stories` }}scale-x-100{{end}}"></span>
+                </a>
+
+                <!-- Nav Item: Guide -->
+                <a href="/access-denied"
+                    class="relative group inline-flex items-center px-2 pt-1 text-base font-bold text-stone-600 hover:text-primary-600 transition-colors duration-200">
+                    <span>Guide</span>
+                    <span
+                        class="absolute -bottom-1 left-0 w-full h-0.5 bg-primary-500 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left {{if eq .CurrentPage `guide` }}scale-x-100{{end}}"></span>
                 </a>
 
                 <!-- Nav Item: About -->
                 <a href="/about"
-                    class="relative group inline-flex items-center px-1 pt-1 text-sm font-medium text-slate-700 hover:text-blue-600 transition-colors duration-200">
+                    class="relative group inline-flex items-center px-2 pt-1 text-base font-bold text-stone-600 hover:text-primary-600 transition-colors duration-200">
                     <span>About</span>
                     <span
-                        class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left {{if eq .CurrentPage `about` }}scale-x-100{{end}}"></span>
+                        class="absolute -bottom-1 left-0 w-full h-0.5 bg-primary-500 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left {{if eq .CurrentPage `about` }}scale-x-100{{end}}"></span>
                 </a>
 
-                <!-- Nav Item: Courses -->
-                <a href="/courses"
-                    class="relative group inline-flex items-center px-1 pt-1 text-sm font-medium text-slate-700 hover:text-blue-600 transition-colors duration-200">
-                    <span>Courses</span>
-                    <span
-                        class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left {{if eq .CurrentPage `courses` }}scale-x-100{{end}}"></span>
-                </a>
-
-                <!-- Nav Item: Testimonials -->
-                <a href="/testimonials"
-                    class="relative group inline-flex items-center px-1 pt-1 text-sm font-medium text-slate-700 hover:text-blue-600 transition-colors duration-200">
-                    <span>Testimonials</span>
-                    <span
-                        class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left {{if eq .CurrentPage `testimonials` }}scale-x-100{{end}}"></span>
+                <!-- CTA Button -->
+                <a href="/share"
+                    class="ml-4 inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-base font-bold rounded-full text-white bg-primary-600 hover:bg-primary-700 transition-all duration-300 shadow-lg shadow-primary-500/30 hover:shadow-primary-500/50 transform hover:-translate-y-0.5">
+                    Share Story
                 </a>
             </div>
 
             <!-- Mobile menu button -->
             <div class="flex items-center sm:hidden">
                 <button type="button" id="mobile-menu-button"
-                    class="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-slate-500 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500"
+                    class="inline-flex items-center justify-center p-2 rounded-md text-stone-400 hover:text-stone-500 hover:bg-stone-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500"
                     aria-expanded="false">
                     <span class="sr-only">Open main menu</span>
                     <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -72,26 +78,26 @@
     </div>
 
     <!-- Mobile menu, show/hide based on menu state. -->
-    <div class="hidden sm:hidden" id="mobile-menu">
+    <div class="hidden sm:hidden bg-white border-t border-stone-100" id="mobile-menu">
         <div class="pt-2 pb-3 space-y-1">
             <a href="/"
-                class="block pl-3 pr-4 py-2 border-l-4 text-base font-medium {{if eq .CurrentPage `home` }}bg-primary-50 border-primary-500 text-primary-700{{else}}border-transparent text-slate-500 hover:bg-slate-50 hover:border-slate-300 hover:text-slate-700{{end}}">Home</a>
+                class="block pl-3 pr-4 py-2 border-l-4 text-base font-medium {{if eq .CurrentPage `home` }}bg-primary-50 border-primary-500 text-primary-700{{else}}border-transparent text-stone-500 hover:bg-stone-50 hover:border-stone-300 hover:text-stone-700{{end}}">Home</a>
+            <a href="/stories"
+                class="block pl-3 pr-4 py-2 border-l-4 text-base font-medium {{if eq .CurrentPage `stories` }}bg-primary-50 border-primary-500 text-primary-700{{else}}border-transparent text-stone-500 hover:bg-stone-50 hover:border-stone-300 hover:text-stone-700{{end}}">Stories</a>
+            <a href="/access-denied"
+                class="block pl-3 pr-4 py-2 border-l-4 text-base font-medium {{if eq .CurrentPage `guide` }}bg-primary-50 border-primary-500 text-primary-700{{else}}border-transparent text-stone-500 hover:bg-stone-50 hover:border-stone-300 hover:text-stone-700{{end}}">Guide</a>
             <a href="/about"
-                class="block pl-3 pr-4 py-2 border-l-4 text-base font-medium {{if eq .CurrentPage `about` }}bg-primary-50 border-primary-500 text-primary-700{{else}}border-transparent text-slate-500 hover:bg-slate-50 hover:border-slate-300 hover:text-slate-700{{end}}">About</a>
-            <a href="/courses"
-                class="block pl-3 pr-4 py-2 border-l-4 text-base font-medium {{if eq .CurrentPage `courses` }}bg-primary-50 border-primary-500 text-primary-700{{else}}border-transparent text-slate-500 hover:bg-slate-50 hover:border-slate-300 hover:text-slate-700{{end}}">Courses</a>
-            <a href="/testimonials"
-                class="block pl-3 pr-4 py-2 border-l-4 text-base font-medium {{if eq .CurrentPage `testimonials` }}bg-primary-50 border-primary-500 text-primary-700{{else}}border-transparent text-slate-500 hover:bg-slate-50 hover:border-slate-300 hover:text-slate-700{{end}}">Testimonials</a>
+                class="block pl-3 pr-4 py-2 border-l-4 text-base font-medium {{if eq .CurrentPage `about` }}bg-primary-50 border-primary-500 text-primary-700{{else}}border-transparent text-stone-500 hover:bg-stone-50 hover:border-stone-300 hover:text-stone-700{{end}}">About</a>
         </div>
     </div>
 </nav>
 {{end}}
 
-/*
-* ┌── o m a r ──┐
-* │ @iamOmarFaruk
-* │ omarfaruk.dev
-* │ Created: 2025-12-21
-* │ Updated: 2025-12-21
-* └─ go-server ───┘
-*/
+<!--
+ ┌── o m a r ──┐
+ │ gh@iamOmarFaruk
+ │ omarfaruk.dev
+ │ Created: 2025-12-21
+ │ Updated: 2025-12-21
+ └─ go-server ───┘
+-->

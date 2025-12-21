@@ -84,6 +84,8 @@ func (h *PageHandler) render(w http.ResponseWriter, pageFile string, data interf
         aboutData.IsDev = h.isDev
     } else if testData, ok := data.(*models.TestimonialPageData); ok {
         testData.IsDev = h.isDev
+    } else if storiesData, ok := data.(*models.StoriesPageData); ok {
+        storiesData.IsDev = h.isDev
     }
 
 	err = tmpl.ExecuteTemplate(w, "layout", data)
@@ -94,23 +96,23 @@ func (h *PageHandler) render(w http.ResponseWriter, pageFile string, data interf
 
 func (h *PageHandler) Home(w http.ResponseWriter, r *http.Request) {
 	data := h.pageService.GetHomeData()
-	h.render(w, "home.html", &data)
+	h.render(w, "home.html", data)
 }
 
 func (h *PageHandler) About(w http.ResponseWriter, r *http.Request) {
 	data := h.pageService.GetAboutData()
-	h.render(w, "about.html", &data)
+	h.render(w, "about.html", data)
 }
 
-func (h *PageHandler) Testimonials(w http.ResponseWriter, r *http.Request) {
-	data := h.pageService.GetTestimonialData()
-	h.render(w, "testimonials.html", &data)
+func (h *PageHandler) Stories(w http.ResponseWriter, r *http.Request) {
+	data := h.pageService.GetStoriesData()
+	h.render(w, "stories.html", data)
 }
 
 func (h *PageHandler) Courses(w http.ResponseWriter, r *http.Request) {
 	category := r.URL.Query().Get("category")
 	data := h.pageService.GetCoursesData(category)
-	h.render(w, "courses.html", &data)
+	h.render(w, "courses.html", data)
 }
 
 func (h *PageHandler) AgeCheck(w http.ResponseWriter, r *http.Request) {

@@ -49,7 +49,7 @@ func main() {
 	// Routes
 	r.Get("/", pageHandler.Home)
 	r.Get("/about", pageHandler.About)
-	r.Get("/testimonials", pageHandler.Testimonials)
+	r.Get("/stories", pageHandler.Stories)
 	
 	// Protected routes
 	r.Group(func(r chi.Router) {
