@@ -2,34 +2,61 @@
 <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
-            <div class="flex items-center">
-                <a href="/" class="flex-shrink-0 flex items-center">
+            <div class="flex-shrink-0 flex items-center">
+                <a href="/" class="flex items-center gap-2.5 group">
+                    <!-- Icon -->
+                    <div
+                        class="p-1.5 bg-blue-600 rounded-lg text-white group-hover:bg-blue-700 transition-colors duration-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <!-- Text -->
                     <span
-                        class="text-2xl font-bold bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-transparent">
-                        Go Web App
+                        class="text-2xl font-bold tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors duration-300">
+                        GoNexus
                     </span>
                 </a>
-                <div class="hidden sm:ml-8 sm:flex sm:space-x-8">
-                    <a href="/"
-                        class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium {{if eq .CurrentPage `home` }}border-primary-500 text-slate-900{{else}}border-transparent text-slate-500 hover:border-slate-300 hover:text-slate-700{{end}}">
-                        Home
-                    </a>
-                    <a href="/about"
-                        class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium {{if eq .CurrentPage `about` }}border-primary-500 text-slate-900{{else}}border-transparent text-slate-500 hover:border-slate-300 hover:text-slate-700{{end}}">
-                        About
-                    </a>
-                    <a href="/courses"
-                        class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium {{if eq .CurrentPage `courses` }}border-primary-500 text-slate-900{{else}}border-transparent text-slate-500 hover:border-slate-300 hover:text-slate-700{{end}}">
-                        Courses
-                    </a>
-                    <a href="/testimonials"
-                        class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium {{if eq .CurrentPage `testimonials` }}border-primary-500 text-slate-900{{else}}border-transparent text-slate-500 hover:border-slate-300 hover:text-slate-700{{end}}">
-                        Testimonials
-                    </a>
-                </div>
             </div>
+
+            <!-- Desktop Menu -->
+            <div class="hidden sm:flex sm:items-center sm:space-x-8">
+                <!-- Nav Item: Home -->
+                <a href="/"
+                    class="relative group inline-flex items-center px-1 pt-1 text-sm font-medium text-slate-700 hover:text-blue-600 transition-colors duration-200">
+                    <span>Home</span>
+                    <span
+                        class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left {{if eq .CurrentPage `home` }}scale-x-100{{end}}"></span>
+                </a>
+
+                <!-- Nav Item: About -->
+                <a href="/about"
+                    class="relative group inline-flex items-center px-1 pt-1 text-sm font-medium text-slate-700 hover:text-blue-600 transition-colors duration-200">
+                    <span>About</span>
+                    <span
+                        class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left {{if eq .CurrentPage `about` }}scale-x-100{{end}}"></span>
+                </a>
+
+                <!-- Nav Item: Courses -->
+                <a href="/courses"
+                    class="relative group inline-flex items-center px-1 pt-1 text-sm font-medium text-slate-700 hover:text-blue-600 transition-colors duration-200">
+                    <span>Courses</span>
+                    <span
+                        class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left {{if eq .CurrentPage `courses` }}scale-x-100{{end}}"></span>
+                </a>
+
+                <!-- Nav Item: Testimonials -->
+                <a href="/testimonials"
+                    class="relative group inline-flex items-center px-1 pt-1 text-sm font-medium text-slate-700 hover:text-blue-600 transition-colors duration-200">
+                    <span>Testimonials</span>
+                    <span
+                        class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left {{if eq .CurrentPage `testimonials` }}scale-x-100{{end}}"></span>
+                </a>
+            </div>
+
             <!-- Mobile menu button -->
-            <div class="-mr-2 flex items-center sm:hidden">
+            <div class="flex items-center sm:hidden">
                 <button type="button" id="mobile-menu-button"
                     class="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-slate-500 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500"
                     aria-expanded="false">

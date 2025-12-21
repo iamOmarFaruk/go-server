@@ -14,7 +14,7 @@ func NewPageService() *PageService {
 func (s *PageService) GetHomeData() *models.HomePageData {
 	return &models.HomePageData{
 		PageData: models.PageData{
-			Title:       "Home - Go Web App",
+			Title:       "Home - GoNexus",
 			Description: "Welcome to our amazing Go web application",
 			CurrentPage: "home",
 			CurrentYear: time.Now().Year(),
@@ -45,7 +45,7 @@ func (s *PageService) GetHomeData() *models.HomePageData {
 func (s *PageService) GetAboutData() *models.AboutPageData {
 	return &models.AboutPageData{
 		PageData: models.PageData{
-			Title:       "About Us - Go Web App",
+			Title:       "About Us - GoNexus",
 			Description: "Learn more about our company and team",
 			CurrentPage: "about",
 			CurrentYear: time.Now().Year(),
@@ -81,7 +81,7 @@ func (s *PageService) GetAboutData() *models.AboutPageData {
 func (s *PageService) GetTestimonialData() *models.TestimonialPageData {
 	return &models.TestimonialPageData{
 		PageData: models.PageData{
-			Title:       "Testimonials - Go Web App",
+			Title:       "Testimonials - GoNexus",
 			Description: "What our clients say about our Go web development services",
 			CurrentPage: "testimonials",
 			CurrentYear: time.Now().Year(),
@@ -206,7 +206,7 @@ func (s *PageService) GetCoursesData(category string) *models.CoursesPageData {
 
 	return &models.CoursesPageData{
 		PageData: models.PageData{
-			Title:       "Courses - Go Web App",
+			Title:       "Courses - GoNexus",
 			Description: "Explore our comprehensive programming courses to boost your skills",
 			CurrentPage: "courses",
 			CurrentYear: time.Now().Year(),
@@ -220,7 +220,7 @@ func (s *PageService) GetCoursesData(category string) *models.CoursesPageData {
 
 func (s *PageService) GetAgeCheckData() *models.PageData {
 	return &models.PageData{
-		Title:       "Age Verification - Go Web App",
+		Title:       "Age Verification - GoNexus",
 		Description: "Please verify your age to access this content.",
 		CurrentPage: "age-check",
 		CurrentYear: time.Now().Year(),
@@ -230,7 +230,7 @@ func (s *PageService) GetAgeCheckData() *models.PageData {
 
 func (s *PageService) GetAccessDeniedData() *models.PageData {
 	return &models.PageData{
-		Title:       "Access Denied - Go Web App",
+		Title:       "Access Denied - GoNexus",
 		Description: "You must be at least 20 years old to access this content.",
 		CurrentPage: "access-denied",
 		CurrentYear: time.Now().Year(),
