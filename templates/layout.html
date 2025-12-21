@@ -14,8 +14,8 @@
     <meta property="og:title" content="{{.Title}}">
     <meta property="og:description" content="{{.Description}}">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://example.com{{if eq .CurrentPage " about"}}/about{{else if eq
-        .CurrentPage "testimonials" }}/testimonials{{else}}/{{end}}">
+    <meta property="og:url"
+        content="https://example.com{{if eq .CurrentPage `about`}}/about{{else if eq .CurrentPage `testimonials`}}/testimonials{{else}}/{{end}}">
     <meta property="og:site_name" content="Go Web App">
 
     <!-- Twitter Card Meta Tags -->
@@ -44,17 +44,17 @@
             </button>
             <ul class="nav-menu">
                 <li class="nav-item">
-                    <a href="/" class="nav-link {{if eq .CurrentPage " home"}}active{{end}}">Home</a>
+                    <a href="/" class="nav-link {{if eq .CurrentPage `home` }}active{{end}}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/about" class="nav-link {{if eq .CurrentPage " about"}}active{{end}}">About</a>
+                    <a href="/about" class="nav-link {{if eq .CurrentPage `about` }}active{{end}}">About</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/courses" class="nav-link {{if eq .CurrentPage " courses"}}active{{end}}">Courses</a>
+                    <a href="/courses" class="nav-link {{if eq .CurrentPage `courses` }}active{{end}}">Courses</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/testimonials" class="nav-link {{if eq .CurrentPage "
-                        testimonials"}}active{{end}}">Testimonials</a>
+                    <a href="/testimonials"
+                        class="nav-link {{if eq .CurrentPage `testimonials` }}active{{end}}">Testimonials</a>
                 </li>
             </ul>
         </div>
