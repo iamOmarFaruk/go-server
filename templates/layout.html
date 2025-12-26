@@ -7,6 +7,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{.Title}}</title>
     <meta name="description" content="{{.Description}}">
+    <meta name="keywords" content="{{.Keywords}}">
+    <meta name="author" content="Wanderlust">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gonexus.dev/{{.CurrentPage}}">
+    <meta property="og:title" content="{{.Title}}">
+    <meta property="og:description" content="{{.Description}}">
+    {{if .SocialImageURL}}<meta property="og:image" content="{{.SocialImageURL}}">{{end}}
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://gonexus.dev/{{.CurrentPage}}">
+    <meta property="twitter:title" content="{{.Title}}">
+    <meta property="twitter:description" content="{{.Description}}">
+    {{if .SocialImageURL}}<meta property="twitter:image" content="{{.SocialImageURL}}">{{end}}
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/static/images/favicon.svg">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

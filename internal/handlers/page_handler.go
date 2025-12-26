@@ -159,8 +159,9 @@ func (h *PageHandler) NotFound(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusNotFound)
 	
 	data := h.pageService.GetHomeData()
-	data.Title = "Page Not Found - 404 - GoNexus"
-	data.Description = "Oops! The page you're looking for doesn't exist."
+	data.Title = "Page Not Found (404) | Wanderlust"
+	data.Description = "Oops! The page you're looking for doesn't exist. Return to Wanderlust home."
+	data.Keywords = "404, page not found, error"
 	data.CurrentPage = "404"
 	data.ContentType = "404"
 	

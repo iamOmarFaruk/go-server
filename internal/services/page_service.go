@@ -14,11 +14,13 @@ func NewPageService() *PageService {
 func (s *PageService) GetHomeData() *models.HomePageData {
 	return &models.HomePageData{
 		PageData: models.PageData{
-			Title:       "Home - GoNexus",
-			Description: "Welcome to our amazing Go web application",
-			CurrentPage: "home",
-			CurrentYear: time.Now().Year(),
-			ContentType:  "home",
+			Title:          "Wanderlust | Premium Travel Experiences & Web Solutions",
+			Description:    "Discover the world's most breathtaking destinations. Your nexus for adventure and technology.",
+			Keywords:       "travel, wanderlust, go, golang, web development, courses, adventures, tours",
+			SocialImageURL: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80",
+			CurrentPage:    "home",
+			CurrentYear:    time.Now().Year(),
+			ContentType:    "home",
 		},
 		HeroSlides: []models.HeroSlide{
 			{
@@ -84,13 +86,15 @@ func (s *PageService) GetHomeData() *models.HomePageData {
 func (s *PageService) GetAboutData() *models.AboutPageData {
 	return &models.AboutPageData{
 		PageData: models.PageData{
-			Title:       "About Us - GoNexus",
-			Description: "Learn more about our company and team",
-			CurrentPage: "about",
-			CurrentYear: time.Now().Year(),
-			ContentType:  "about",
+			Title:          "About Wanderlust | Innovating Web Development",
+			Description:    "Meet the team behind Wanderlust. We are passionate about building high-performance Go web applications and crafting unforgettable travel experiences.",
+			Keywords:       "about us, team, wanderlust, go developers, company mission, tech startup",
+			SocialImageURL: "/static/images/default-avatar.svg", // Ideally a team photo
+			CurrentPage:    "about",
+			CurrentYear:    time.Now().Year(),
+			ContentType:    "about",
 		},
-		CompanyName:  "Go Web Solutions",
+		CompanyName:  "Wanderlust Solutions",
 		CompanyStory: "We are passionate about building high-performance web applications using Go. Our team combines expertise in modern web development with deep knowledge of Go's ecosystem to deliver exceptional solutions.",
 		FoundedYear:  2023,
 		Mission:      "To make Go web development accessible and enjoyable for developers worldwide.",
@@ -120,11 +124,13 @@ func (s *PageService) GetAboutData() *models.AboutPageData {
 func (s *PageService) GetTestimonialData() *models.TestimonialPageData {
 	return &models.TestimonialPageData{
 		PageData: models.PageData{
-			Title:       "Testimonials - GoNexus",
-			Description: "What our clients say about our Go web development services",
-			CurrentPage: "testimonials",
-			CurrentYear: time.Now().Year(),
-			ContentType:  "testimonials",
+			Title:          "Client Success Stories | Wanderlust Reviews",
+			Description:    "See how Wanderlust has transformed businesses with high-performance Go solutions. Read reviews from our satisfied clients.",
+			Keywords:       "testimonials, reviews, client stories, wanderlust, go development case studies",
+			SocialImageURL: "/static/images/default-avatar.svg",
+			CurrentPage:    "testimonials",
+			CurrentYear:    time.Now().Year(),
+			ContentType:    "testimonials",
 		},
 		Testimonials: []models.Testimonial{
 			{
@@ -245,11 +251,13 @@ func (s *PageService) GetCoursesData(category string) *models.CoursesPageData {
 
 	return &models.CoursesPageData{
 		PageData: models.PageData{
-			Title:       "Courses - GoNexus",
-			Description: "Explore our comprehensive programming courses to boost your skills",
-			CurrentPage: "courses",
-			CurrentYear: time.Now().Year(),
-			ContentType: "courses",
+			Title:          "Master Go Programming | Wanderlust Courses",
+			Description:    "Level up your skills with our expert-led Go programming courses. From fundamentals to advanced microservices and cloud-native development.",
+			Keywords:       "go courses, golang tutorials, learn go, backend development, devops training, wanderlust",
+			SocialImageURL: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=1200&q=80",
+			CurrentPage:    "courses",
+			CurrentYear:    time.Now().Year(),
+			ContentType:    "courses",
 		},
 		Categories:       []string{"All", "Go", "Web Development", "DevOps", "Backend"},
 		Courses:          filteredCourses,
@@ -259,31 +267,35 @@ func (s *PageService) GetCoursesData(category string) *models.CoursesPageData {
 
 func (s *PageService) GetAgeCheckData() *models.PageData {
 	return &models.PageData{
-		Title:       "Age Verification - GoNexus",
-		Description: "Please verify your age to access this content.",
-		CurrentPage: "age-check",
-		CurrentYear: time.Now().Year(),
-		ContentType: "age-check",
+		Title:          "Age Verification Required | Wanderlust",
+		Description:    "Please verify your age to access restricted content.",
+		Keywords:       "age check, verification",
+		CurrentPage:    "age-check",
+		CurrentYear:    time.Now().Year(),
+		ContentType:    "age-check",
 	}
 }
 
 func (s *PageService) GetAccessDeniedData() *models.PageData {
 	return &models.PageData{
-		Title:       "Access Denied - GoNexus",
-		Description: "You must be at least 20 years old to access this content.",
-		CurrentPage: "access-denied",
-		CurrentYear: time.Now().Year(),
-		ContentType: "access-denied",
+		Title:          "Access Restricted | Wanderlust",
+		Description:    "You must be of legal age to view this content.",
+		Keywords:       "access denied, restricted",
+		CurrentPage:    "access-denied",
+		CurrentYear:    time.Now().Year(),
+		ContentType:    "access-denied",
 	}
 }
 func (s *PageService) GetStoriesData() *models.StoriesPageData {
 	return &models.StoriesPageData{
 		PageData: models.PageData{
-			Title:       "Travel Stories - Wanderlust",
-			Description: "Read inspiring travel stories from around the globe.",
-			CurrentPage: "stories",
-			CurrentYear: time.Now().Year(),
-			ContentType: "stories",
+			Title:          "Travel Stories & Adventures | Wanderlust Blog",
+			Description:    "Immerse yourself in inspiring travel stories from around the globe. Discover hidden gems, culture, and adventure.",
+			Keywords:       "travel blog, travel stories, wanderlust, adventure, culture, food",
+			SocialImageURL: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1200&q=80",
+			CurrentPage:    "stories",
+			CurrentYear:    time.Now().Year(),
+			ContentType:    "stories",
 		},
 		Stories: []models.Story{
 			{

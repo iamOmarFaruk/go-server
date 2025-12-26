@@ -1,12 +1,14 @@
 package models
 
 type PageData struct {
-	Title       string
-	Description string
-	CurrentPage string
-	CurrentYear int
-	ContentType string // home, about, testimonials, 404
-	IsDev       bool
+	Title          string
+	Description    string
+	Keywords       string
+	SocialImageURL string
+	CurrentPage    string
+	CurrentYear    int
+	ContentType    string // home, about, testimonials, 404
+	IsDev          bool
 }
 
 type HomePageData struct {
