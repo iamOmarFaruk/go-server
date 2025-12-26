@@ -96,6 +96,7 @@ func (h *PageHandler) render(w http.ResponseWriter, pageFile string, data interf
 
 func (h *PageHandler) Home(w http.ResponseWriter, r *http.Request) {
 	data := h.pageService.GetHomeData()
+	data.IsDev = h.isDev
 	h.render(w, "home.html", data)
 }
 

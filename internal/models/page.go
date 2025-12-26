@@ -11,9 +11,19 @@ type PageData struct {
 
 type HomePageData struct {
 	PageData
-	HeroTitle    string
-	HeroSubtitle string
+	HeroSlides   []HeroSlide
 	Features     []Feature
+}
+
+type HeroSlide struct {
+	Title       string
+	Subtitle    string
+	CTA1Text    string
+	CTA1Link    string
+	CTA2Text    string
+	CTA2Link    string
+	ImageURL    string
+	Gradient    string
 }
 
 type AboutPageData struct {
@@ -35,6 +45,10 @@ type Feature struct {
 	Title       string
 	Description string
 	Icon        string
+	ImageURL    string
+	Category    string
+	Location    string
+	Author      string
 }
 
 type TeamMember struct {
