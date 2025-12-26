@@ -9,7 +9,7 @@ services:
     environment:
       - PORT=8080
       - GIN_MODE=debug
-      - DEV_MODE=true
+      - DEV_MODE=false
     volumes:
       # Mount source code for development
       - .:/app
