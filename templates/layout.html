@@ -36,28 +36,12 @@
         href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Quicksand:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
-    <!-- Vite Dev / Prod Assets -->
-    {{ if .IsDev }}
-    <!-- Critical CSS to prevent FOUC in dev mode -->
-    <style>
-        body:not(.loaded) {
-            opacity: 0;
-        }
-
-        body.loaded {
-            opacity: 1;
-            transition: opacity 0.15s ease-in;
-        }
-    </style>
-    <script type="module" src="http://localhost:5173/@vite/client"></script>
-    <script type="module" src="http://localhost:5173/src/main.js"></script>
-    {{ else }}
+    <!-- Static Assets -->
     <link rel="stylesheet" href="/static/dist/assets/main.css">
     <script type="module" src="/static/dist/assets/main.js"></script>
-    {{ end }}
 </head>
 
-<body class="bg-background-50 min-h-screen flex flex-col font-sans text-stone-800{{ if not .IsDev }} loaded{{ end }}">
+<body class="bg-background-50 min-h-screen flex flex-col font-sans text-stone-800 loaded">
     {{template "navbar" .}}
 
     <main class="flex-grow">
@@ -75,7 +59,7 @@
                 mobileMenuButton.addEventListener('click', function () {
                     mobileMenu.classList.toggle('hidden');
                 });
-        }
+            }
         }    </script>
 </body>
 
