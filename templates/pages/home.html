@@ -43,9 +43,8 @@
 <!-- Features / Travel Tips -->
 <section class="py-24 bg-stone-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {{template "section-title" dict "Badge" "Travel Smart" "Icon" "compass" "Title" "Tips & Tricks for the Modern
-        Explorer" "Subtitle" "Essential advice to make your journeys unforgettable" "BadgeColor" "primary" "Style"
-        "badge"}}
+        {{template "section-title" dict "Badge" "Travel Smart" "Icon" "compass" "Title" "Tips & Tricks for the Modern Explorer" "Subtitle" "Essential advice to make your journeys unforgettable" "BadgeColor" "primary" "Style" "badge"}}
+
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {{range .Features}}
             {{template "feature-card" .}}
@@ -140,8 +139,7 @@
 <!-- Popular Guides -->
 <section class="py-24 bg-stone-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {{template "section-title" dict "Badge" "Explore" "Icon" "map" "Title" "Popular Travel Guides" "Subtitle"
-        "Discover our most loved destinations curated by expert travelers" "BadgeColor" "primary" "Style" "badge"}}
+        {{template "section-title" dict "Badge" "Explore" "Icon" "map" "Title" "Popular Travel Guides" "Subtitle" "Discover our most loved destinations curated by expert travelers" "BadgeColor" "primary" "Style" "badge"}}
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {{range .PopularGuides}}
             {{template "guide-card" .}}
@@ -153,8 +151,7 @@
 <!-- Testimonials -->
 <section class="py-24 bg-white overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {{template "section-title" dict "Badge" "Testimonials" "Icon" "quote" "Title" "What Travelers Say" "Subtitle"
-        "Hear from our amazing community of explorers" "BadgeColor" "amber" "Style" "badge"}}
+        {{template "section-title" dict "Badge" "Testimonials" "Icon" "quote" "Title" "What Travelers Say" "Subtitle" "Hear from our amazing community of explorers" "BadgeColor" "amber" "Style" "badge"}}
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {{range .Testimonials}}
             {{template "testimonial-card" .}}
