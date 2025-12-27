@@ -13,8 +13,45 @@ type PageData struct {
 
 type HomePageData struct {
 	PageData
-	HeroSlides   []HeroSlide
-	Features     []Feature
+	HeroSlides    []HeroSlide
+	Features      []Feature
+	AboutSection  AboutSection      // NEW
+	PopularGuides []GuideCard       // NEW
+	Testimonials  []TestimonialCard // NEW
+	FAQItems      []FAQItem         // NEW
+}
+
+type AboutSection struct {
+	Title       string
+	Subtitle    string
+	Description string
+	ImageURL    string
+	CTAText     string
+	CTALink     string
+}
+
+type GuideCard struct {
+	Title       string
+	Description string
+	ImageURL    string
+	Category    string
+	Author      string
+	ReadTime    string
+	Link        string
+}
+
+type TestimonialCard struct {
+	Name     string
+	Role     string
+	Company  string
+	Content  string
+	ImageURL string
+	Rating   int
+}
+
+type FAQItem struct {
+	Question string
+	Answer   string
 }
 
 type HeroSlide struct {

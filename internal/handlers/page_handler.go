@@ -19,8 +19,29 @@ type PageHandler struct {
 }
 
 func NewPageHandler(templatePath string) (*PageHandler, error) {
+	// custom helper functions
+	funcMap := template.FuncMap{
+		"seq": func(n int) []int {
+			s := make([]int, n)
+			for i := range s {
+				s[i] = i
+			}
+			return s
+		},
+		"slice": func(s string, i int, j int) string {
+			if i < 0 {
+				i = 0
+			}
+			if j > len(s) {
+				j = len(s)
+			}
+			return s[i:j]
+		},
+	}
+
 	// Parse layout and partials
-	templates, err := template.ParseGlob(templatePath + "/layout.html")
+	templates := template.New("").Funcs(funcMap)
+	templates, err := templates.ParseGlob(templatePath + "/layout.html")
 	if err != nil {
 		return nil, err
 	}

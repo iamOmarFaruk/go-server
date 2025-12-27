@@ -54,7 +54,7 @@ func (s *PageService) GetHomeData() *models.HomePageData {
 				Gradient: "bg-black/40",
 			},
 		},
-		Features: []models.Feature{
+	Features: []models.Feature{
 			{
 				Title:       "Pack Like a Pro",
 				Description: "Learn the art of minimalist packing. Roll your clothes, use packing cubes, and never pay for baggage fees again.",
@@ -79,6 +79,75 @@ func (s *PageService) GetHomeData() *models.HomePageData {
 				Author:      "Elena Rodriguez",
 				ImageURL:    "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&q=80",
 			},
+		},
+		AboutSection: models.AboutSection{
+			Title:    "Wanderlust: More Than Just Travel",
+			Subtitle: "Our Mission",
+			Description: "We believe that travel is the best way to learn about the world and yourself. Started in 2023, Wanderlust has grown from a small blog to a global community of explorers. Our mission is to make travel accessible, sustainable, and unforgettable for everyone.",
+			ImageURL: "https://images.unsplash.com/photo-1522071823991-b9671f99118f?w=1000&q=80",
+			CTAText:  "Read Our Story",
+			CTALink:  "/about",
+		},
+		PopularGuides: []models.GuideCard{
+			{
+				Title:       "The Ultimate Japan Itinerary",
+				Description: "Two weeks in the land of the rising sun. From Tokyo's neon lights to Kyoto's ancient temples.",
+				ImageURL:    "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=80",
+				Category:    "Asia",
+				Author:      "Yuki Tanaka",
+				ReadTime:    "12 min read",
+				Link:        "/stories",
+			},
+			{
+				Title:       "Backpacking Europe on a Budget",
+				Description: "How to see Paris, Rome, and Berlin without breaking the bank. Tips on hostels, rail passes, and cheap eats.",
+				ImageURL:    "https://images.unsplash.com/photo-1471341971476-ae15ff5dd4ea?w=800&q=80",
+				Category:    "Europe",
+				Author:      "Alex Johnson",
+				ReadTime:    "15 min read",
+				Link:        "/stories",
+			},
+			{
+				Title:       "Safari 101: A Beginner's Guide",
+				Description: "Everything you need to know before booking your first African safari. When to go, what to pack, and where to stay.",
+				ImageURL:    "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&q=80",
+				Category:    "Africa",
+				Author:      "Sarah Jenkins",
+				ReadTime:    "10 min read",
+				Link:        "/stories",
+			},
+		},
+		Testimonials: []models.TestimonialCard{
+			{
+				Name:     "Emily Clarke",
+				Role:     "Digital Nomad",
+				Company:  "Freelance",
+				Content:  "Wanderlust's guides have been my bible for the past year. I've found hidden gems I never would have discovered on my own!",
+				ImageURL: "https://i.pravatar.cc/150?u=emily",
+				Rating:   5,
+			},
+			{
+				Name:     "James Peterson",
+				Role:     "Photographer",
+				Company:  "LensCrafters",
+				Content:  "The community here is amazing. I've met fellow travelers in three different countries thanks to the meetup forums.",
+				ImageURL: "https://i.pravatar.cc/150?u=james",
+				Rating:   5,
+			},
+			{
+				Name:     "Sophia Miller",
+				Role:     "Travel Blogger",
+				Company:  "Soph Travels",
+				Content:  "Detailed, accurate, and inspiring. I recommend Wanderlust to all my followers who want authentic travel experiences.",
+				ImageURL: "https://i.pravatar.cc/150?u=sophia",
+				Rating:   5,
+			},
+		},
+		FAQItems: []models.FAQItem{
+			{Question: "How do I book a trip?", Answer: "We partner with trusted travel agencies. You can find booking links directly in our destination guides."},
+			{Question: "Is Wanderlust free to use?", Answer: "Yes! All our guides and community features are completely free. We also offer premium courses for aspiring travel bloggers."},
+			{Question: "Can I contribute a story?", Answer: "Absolutely! We love hearing from our community. Visit the 'Write for Us' page to submit your travel stories."},
+			{Question: "Do you offer group tours?", Answer: "We occasionally organize group expeditions. Subscribe to our newsletter to be the first to know about upcoming trips."},
 		},
 	}
 }
