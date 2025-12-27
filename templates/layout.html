@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{.Title}}</title>
+    <title>{{if .Title}}{{.Title}} | Wanderlust{{else}}Wanderlust{{end}}</title>
     <meta name="description" content="{{.Description}}">
     <meta name="keywords" content="{{.Keywords}}">
     <meta name="author" content="Wanderlust">
@@ -15,14 +15,16 @@
     <meta property="og:url" content="https://gonexus.dev/{{.CurrentPage}}">
     <meta property="og:title" content="{{.Title}}">
     <meta property="og:description" content="{{.Description}}">
-    {{if .SocialImageURL}}<meta property="og:image" content="{{.SocialImageURL}}">{{end}}
+    {{if .SocialImageURL}}
+    <meta property="og:image" content="{{.SocialImageURL}}">{{end}}
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://gonexus.dev/{{.CurrentPage}}">
     <meta property="twitter:title" content="{{.Title}}">
     <meta property="twitter:description" content="{{.Description}}">
-    {{if .SocialImageURL}}<meta property="twitter:image" content="{{.SocialImageURL}}">{{end}}
+    {{if .SocialImageURL}}
+    <meta property="twitter:image" content="{{.SocialImageURL}}">{{end}}
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/static/images/favicon.svg">
@@ -73,9 +75,8 @@
                 mobileMenuButton.addEventListener('click', function () {
                     mobileMenu.classList.toggle('hidden');
                 });
-            }
-        });
-    </script>
+        }
+        }    </script>
 </body>
 
 </html>
@@ -86,6 +87,6 @@
  │ gh@iamOmarFaruk
  │ omarfaruk.dev
  │ Created: 2025-12-21
- │ Updated: 2025-12-21
+ │ Updated: 27-12-25
  └─ go-server ───┘
 -->

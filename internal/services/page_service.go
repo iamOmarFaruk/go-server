@@ -97,7 +97,7 @@ func (s *PageService) GetAboutData() *models.AboutPageData {
 		CompanyName:  "Wanderlust Solutions",
 		CompanyStory: "We are passionate about building high-performance web applications using Go. Our team combines expertise in modern web development with deep knowledge of Go's ecosystem to deliver exceptional solutions.",
 		FoundedYear:  2023,
-		Mission:      "To make Go web development accessible and enjoyable for developers worldwide.",
+		Mission:      "To inspire and enable everyone to explore the beauty of our planet.",
 		TeamMembers: []models.TeamMember{
 			{
 				Name:     "Alex Johnson",
@@ -353,6 +353,6 @@ func (s *PageService) GetStoriesData() *models.StoriesPageData {
  * ┌── o m a r ──┐
  * │ @iamOmarFaruk
  * │ omarfaruk.dev
- * │ Updated: 2025-12-21
+ * │ Updated: 27-12-25
  * └─ go-server ───┘
  */

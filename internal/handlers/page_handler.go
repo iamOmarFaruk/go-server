@@ -173,6 +173,6 @@ func (h *PageHandler) NotFound(w http.ResponseWriter, r *http.Request) {
  * │ @iamOmarFaruk
  * │ omarfaruk.dev
  * │ Touched: 2025-12-21
- * │ Updated: 2025-12-21
+ * │ Updated: 27-12-25
  * └─ go-server ───┘
  */
