@@ -43,71 +43,12 @@
 <!-- Features / Travel Tips -->
 <section class="py-24 bg-stone-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <h2 class="text-base font-bold text-primary-600 tracking-wide uppercase">Travel Smart</h2>
-            <p class="mt-2 text-4xl font-extrabold text-stone-900 sm:text-5xl font-display">Tips & Tricks for the Modern
-                Explorer</p>
-        </div>
+        {{template "section-title" dict "Badge" "Travel Smart" "Icon" "compass" "Title" "Tips & Tricks for the Modern
+        Explorer" "Subtitle" "Essential advice to make your journeys unforgettable" "BadgeColor" "primary" "Style"
+        "badge"}}
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {{range .Features}}
-            <!-- Card -->
-            <div
-                class="group relative aspect-[3/4] rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer">
-                <!-- Background Image -->
-                <img src="{{.ImageURL}}" alt="{{.Title}}"
-                    class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
-
-                <!-- Gradient Overlay (Darker for readability) -->
-                <div
-                    class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent opacity-90 transition-opacity duration-300">
-                </div>
-
-                <!-- Content Overlay -->
-                <div class="absolute inset-0 p-8 flex flex-col justify-end">
-                    <!-- Location Badge -->
-                    <div class="absolute top-6 left-6">
-                        <span
-                            class="inline-flex items-center px-3 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-white text-xs font-bold tracking-wide uppercase shadow-sm">
-                            <svg class="w-3 h-3 mr-1.5 text-primary-400" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                            {{.Location}}
-                        </span>
-                    </div>
-
-                    <!-- Text Content -->
-                    <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                        <div
-                            class="inline-block px-3 py-1 mb-2 rounded-full bg-gradient-to-r from-primary-600 to-primary-400 shadow-md">
-                            <span
-                                class="text-white text-[10px] font-bold tracking-wider uppercase drop-shadow-sm">{{.Category}}</span>
-                        </div>
-                        <h3
-                            class="text-2xl font-display font-bold text-white mb-3 leading-tight group-hover:text-primary-300 transition-colors drop-shadow-md">
-                            {{.Title}}
-                        </h3>
-                        <p
-                            class="text-stone-200 text-sm line-clamp-3 mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 font-medium drop-shadow-sm">
-                            {{.Description}}
-                        </p>
-
-                        <!-- Author -->
-                        <div
-                            class="flex items-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-200">
-                            <div
-                                class="w-8 h-8 rounded-full bg-primary-500 flex items-center justify-center text-white font-bold text-xs">
-                                {{slice .Author 0 1}}
-                            </div>
-                            <div>
-                                <p class="text-white text-xs font-bold">{{.Author}}</p>
-                                <p class="text-stone-400 text-[10px] uppercase tracking-wider">Travel Expert</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {{template "feature-card" .}}
             {{end}}
         </div>
     </div>
@@ -199,75 +140,11 @@
 <!-- Popular Guides -->
 <section class="py-24 bg-stone-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <div
-                class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 border border-primary-100 mb-4">
-                <svg class="w-4 h-4 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7">
-                    </path>
-                </svg>
-                <span class="text-primary-700 font-bold text-sm tracking-widest uppercase">Explore</span>
-            </div>
-            <p class="mt-2 text-4xl font-extrabold text-stone-900 sm:text-5xl font-display">Popular Travel Guides</p>
-            <p class="mt-4 text-lg text-stone-500 max-w-2xl mx-auto">Discover our most loved destinations curated by
-                expert travelers</p>
-        </div>
+        {{template "section-title" dict "Badge" "Explore" "Icon" "map" "Title" "Popular Travel Guides" "Subtitle"
+        "Discover our most loved destinations curated by expert travelers" "BadgeColor" "primary" "Style" "badge"}}
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {{range .PopularGuides}}
-            <div
-                class="group relative aspect-[3/4] rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer transform hover:-translate-y-2">
-                <!-- Background Image -->
-                <img src="{{.ImageURL}}" alt="{{.Title}}"
-                    class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
-
-                <!-- Enhanced Gradient Overlay for better text readability -->
-                <div
-                    class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/20 opacity-90 group-hover:opacity-100 transition-opacity duration-300">
-                </div>
-
-                <!-- Top Category Badge - Improved Capsule Design -->
-                <div class="absolute top-6 left-6 right-6 flex justify-between items-start">
-                    <div
-                        class="px-4 py-2 rounded-full bg-gradient-to-r from-primary-600/90 to-emerald-500/90 backdrop-blur-md shadow-lg border border-white/20">
-                        <span
-                            class="text-white text-xs font-bold tracking-wider uppercase drop-shadow-lg">{{.Category}}</span>
-                    </div>
-                    <div class="px-3 py-2 rounded-full bg-black/40 backdrop-blur-md border border-white/20">
-                        <span class="text-white/90 text-xs font-medium">{{.ReadTime}}</span>
-                    </div>
-                </div>
-
-                <!-- Content -->
-                <div class="absolute inset-0 p-8 flex flex-col justify-end">
-                    <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                        <h3 class="text-2xl font-display font-bold text-white mb-3 leading-tight drop-shadow-lg">
-                            {{.Title}}</h3>
-                        <p
-                            class="text-white/80 text-sm line-clamp-2 mb-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 drop-shadow-md">
-                            {{.Description}}</p>
-
-                        <!-- Author Section -->
-                        <div
-                            class="flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-200 border-t border-white/30 pt-4">
-                            <div class="flex items-center gap-3">
-                                <div
-                                    class="w-8 h-8 rounded-full bg-gradient-to-br from-primary-400 to-emerald-400 flex items-center justify-center text-white font-bold text-xs shadow-lg">
-                                    {{slice .Author 0 1}}
-                                </div>
-                                <span class="text-white text-sm font-bold drop-shadow-md">{{.Author}}</span>
-                            </div>
-                            <div class="flex items-center gap-1 text-white/80">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <a href="{{.Link}}" class="absolute inset-0 z-10"></a>
-            </div>
+            {{template "guide-card" .}}
             {{end}}
         </div>
     </div>
@@ -276,78 +153,11 @@
 <!-- Testimonials -->
 <section class="py-24 bg-white overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-50 border border-amber-100 mb-4">
-                <svg class="w-4 h-4 text-amber-600" fill="currentColor" viewBox="0 0 24 24">
-                    <path
-                        d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                </svg>
-                <span class="text-amber-700 font-bold text-sm tracking-widest uppercase">Testimonials</span>
-            </div>
-            <p class="mt-2 text-4xl font-extrabold text-stone-900 sm:text-5xl font-display">What Travelers Say</p>
-            <p class="mt-4 text-lg text-stone-500 max-w-2xl mx-auto">Hear from our amazing community of explorers</p>
-        </div>
+        {{template "section-title" dict "Badge" "Testimonials" "Icon" "quote" "Title" "What Travelers Say" "Subtitle"
+        "Hear from our amazing community of explorers" "BadgeColor" "amber" "Style" "badge"}}
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {{range .Testimonials}}
-            <div
-                class="group relative bg-gradient-to-br from-stone-50 to-white p-8 rounded-3xl border border-stone-100 hover:shadow-2xl hover:-translate-y-3 transition-all duration-500">
-
-                <!-- Quote Icon -->
-                <div
-                    class="absolute -top-4 left-8 w-10 h-10 bg-gradient-to-br from-primary-500 to-emerald-500 rounded-xl flex items-center justify-center shadow-lg transform -rotate-6 group-hover:rotate-0 transition-transform duration-300">
-                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                        <path
-                            d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                    </svg>
-                </div>
-
-                <!-- Stars (5-star rating) -->
-                <div class="flex gap-1 mb-6 mt-4">
-                    <svg class="w-5 h-5 text-amber-400 drop-shadow-sm" fill="currentColor" viewBox="0 0 20 20">
-                        <path
-                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                    <svg class="w-5 h-5 text-amber-400 drop-shadow-sm" fill="currentColor" viewBox="0 0 20 20">
-                        <path
-                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                    <svg class="w-5 h-5 text-amber-400 drop-shadow-sm" fill="currentColor" viewBox="0 0 20 20">
-                        <path
-                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                    <svg class="w-5 h-5 text-amber-400 drop-shadow-sm" fill="currentColor" viewBox="0 0 20 20">
-                        <path
-                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                    <svg class="w-5 h-5 text-amber-400 drop-shadow-sm" fill="currentColor" viewBox="0 0 20 20">
-                        <path
-                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                </div>
-
-                <!-- Content -->
-                <p class="text-stone-600 italic leading-relaxed text-lg mb-8">"{{.Content}}"</p>
-
-                <!-- Author -->
-                <div class="flex items-center gap-4 pt-6 border-t border-stone-100">
-                    <div class="relative">
-                        <img src="{{.ImageURL}}" class="h-14 w-14 rounded-full object-cover ring-4 ring-white shadow-lg"
-                            alt="{{.Name}}">
-                        <div
-                            class="absolute -bottom-1 -right-1 w-5 h-5 bg-gradient-to-br from-primary-500 to-emerald-500 rounded-full flex items-center justify-center">
-                            <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd"
-                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </div>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-stone-900 text-lg">{{.Name}}</h4>
-                        <p class="text-sm text-stone-500 font-medium">{{.Role}} • {{.Company}}</p>
-                    </div>
-                </div>
-            </div>
+            {{template "testimonial-card" .}}
             {{end}}
         </div>
     </div>
@@ -356,25 +166,10 @@
 <!-- FAQ Section -->
 <section class="py-24 bg-stone-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <h2 class="text-base font-bold text-primary-600 tracking-wide uppercase">FAQ</h2>
-            <p class="mt-2 text-4xl font-extrabold text-stone-900 sm:text-5xl font-display">Common Questions</p>
-        </div>
+        {{template "section-title" dict "Badge" "FAQ" "Title" "Common Questions" "Style" "simple"}}
         <div class="max-w-3xl mx-auto space-y-4">
-            {{range $index, $item := .FAQItems}}
-            <div class="bg-white rounded-2xl shadow-sm border border-stone-100 overflow-hidden">
-                <button class="w-full p-6 flex justify-between items-center text-left focus:outline-none"
-                    onclick="toggleFAQ(this)">
-                    <span class="font-bold text-stone-900 text-lg">{{.Question}}</span>
-                    <svg class="w-6 h-6 text-primary-500 transform transition-transform duration-300" fill="none"
-                        stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </button>
-                <div class="px-6 pb-0 max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
-                    <p class="text-stone-600 pb-6 leading-relaxed">{{.Answer}}</p>
-                </div>
-            </div>
+            {{range .FAQItems}}
+            {{template "faq-item" .}}
             {{end}}
         </div>
     </div>
@@ -384,19 +179,6 @@
     function toggleFAQ(button) {
         const content = button.nextElementSibling;
         const icon = button.querySelector('svg');
-
-        // Close other open FAQs (optional, but nice for UX)
-        const allContents = document.querySelectorAll('.max-h-0');
-        /* 
-        // Uncomment if you want only one open at a time
-        document.querySelectorAll('button[onclick="toggleFAQ(this)"]').forEach(btn => {
-            if (btn !== button) {
-                btn.nextElementSibling.style.maxHeight = null;
-                btn.nextElementSibling.classList.add('max-h-0');
-                btn.querySelector('svg').classList.remove('rotate-180');
-            }
-        }); 
-        */
 
         if (content.style.maxHeight) {
             content.style.maxHeight = null;
@@ -416,6 +198,6 @@
  │ gh@iamOmarFaruk
  │ omarfaruk.dev
  │ Created: 21-12-25
- │ Updated: 27-12-25
+ │ Updated: 28-12-25
  └─ go-server ───┘
 -->

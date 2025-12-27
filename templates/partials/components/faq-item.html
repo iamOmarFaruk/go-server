@@ -1,0 +1,23 @@
+{{define "faq-item"}}
+<div class="bg-white rounded-2xl shadow-sm border border-stone-100 overflow-hidden">
+    <button class="w-full p-6 flex justify-between items-center text-left focus:outline-none" onclick="toggleFAQ(this)">
+        <span class="font-bold text-stone-900 text-lg">{{.Question}}</span>
+        <svg class="w-6 h-6 text-primary-500 transform transition-transform duration-300" fill="none"
+            stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+    </button>
+    <div class="px-6 pb-0 max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+        <p class="text-stone-600 pb-6 leading-relaxed">{{.Answer}}</p>
+    </div>
+</div>
+{{end}}
+
+<!--
+ ┌── o m a r ──┐
+ │ gh@iamOmarFaruk
+ │ omarfaruk.dev
+ │ Created: 27-12-25
+ │ Updated: 27-12-25
+ └─ go-server ───┘
+-->

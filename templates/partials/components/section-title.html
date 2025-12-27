@@ -1,0 +1,43 @@
+{{define "section-title"}}
+<div class="text-center mb-16">
+    {{if eq .Style "badge"}}
+    <div
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-{{.BadgeColor}}-50 border border-{{.BadgeColor}}-100 mb-4">
+        {{if eq .Icon "map"}}
+        <svg class="w-4 h-4 text-{{.BadgeColor}}-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7">
+            </path>
+        </svg>
+        {{else if eq .Icon "quote"}}
+        <svg class="w-4 h-4 text-{{.BadgeColor}}-600" fill="currentColor" viewBox="0 0 24 24">
+            <path
+                d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+        </svg>
+        {{else if eq .Icon "compass"}}
+        <svg class="w-4 h-4 text-{{.BadgeColor}}-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z">
+            </path>
+        </svg>
+        {{end}}
+        <span class="text-{{.BadgeColor}}-700 font-bold text-sm tracking-widest uppercase">{{.Badge}}</span>
+    </div>
+    {{else}}
+    <h2 class="text-base font-bold text-primary-600 tracking-wide uppercase">{{.Badge}}</h2>
+    {{end}}
+    <p class="mt-2 text-4xl font-extrabold text-stone-900 sm:text-5xl font-display">{{.Title}}</p>
+    {{if .Subtitle}}
+    <p class="mt-4 text-lg text-stone-500 max-w-2xl mx-auto">{{.Subtitle}}</p>
+    {{end}}
+</div>
+{{end}}
+
+<!--
+ ┌── o m a r ──┐
+ │ gh@iamOmarFaruk
+ │ omarfaruk.dev
+ │ Created: 27-12-25
+ │ Updated: 28-12-25
+ └─ go-server ───┘
+-->

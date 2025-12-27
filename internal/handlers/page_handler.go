@@ -18,35 +18,50 @@ type PageHandler struct {
 	isDev       bool
 }
 
-func NewPageHandler(templatePath string) (*PageHandler, error) {
-	// custom helper functions
-	funcMap := template.FuncMap{
-		"seq": func(n int) []int {
-			s := make([]int, n)
-			for i := range s {
-				s[i] = i
+// Package-level funcMap for template helper functions
+var templateFuncMap = template.FuncMap{
+	"seq": func(n int) []int {
+		s := make([]int, n)
+		for i := range s {
+			s[i] = i
+		}
+		return s
+	},
+	"slice": func(s string, i int, j int) string {
+		if i < 0 {
+			i = 0
+		}
+		if j > len(s) {
+			j = len(s)
+		}
+		return s[i:j]
+	},
+	"dict": func(values ...interface{}) map[string]interface{} {
+		dict := make(map[string]interface{})
+		for i := 0; i < len(values); i += 2 {
+			if i+1 < len(values) {
+				key, _ := values[i].(string)
+				dict[key] = values[i+1]
 			}
-			return s
-		},
-		"slice": func(s string, i int, j int) string {
-			if i < 0 {
-				i = 0
-			}
-			if j > len(s) {
-				j = len(s)
-			}
-			return s[i:j]
-		},
-	}
+		}
+		return dict
+	},
+}
 
+func NewPageHandler(templatePath string) (*PageHandler, error) {
 	// Parse layout and partials
-	templates := template.New("").Funcs(funcMap)
+	templates := template.New("").Funcs(templateFuncMap)
 	templates, err := templates.ParseGlob(templatePath + "/layout.html")
 	if err != nil {
 		return nil, err
 	}
 	// Parse partials
 	_, err = templates.ParseGlob(templatePath + "/partials/*.html")
+	if err != nil {
+		return nil, err
+	}
+	// Parse components
+	_, err = templates.ParseGlob(templatePath + "/partials/components/*.html")
 	if err != nil {
 		return nil, err
 	}
@@ -65,8 +80,9 @@ func (h *PageHandler) render(w http.ResponseWriter, pageFile string, data interf
 	var err error
 
 	if h.isDev {
-		// Re-parse everything in dev mode
-		tmpl, err = template.ParseFiles("templates/layout.html")
+		// Re-parse everything in dev mode with funcMap
+		tmpl = template.New("").Funcs(templateFuncMap)
+		tmpl, err = tmpl.ParseFiles("templates/layout.html")
 		if err != nil {
 			http.Error(w, "Layout Parse Error: "+err.Error(), http.StatusInternalServerError)
 			return
@@ -74,6 +90,11 @@ func (h *PageHandler) render(w http.ResponseWriter, pageFile string, data interf
 		_, err = tmpl.ParseGlob("templates/partials/*.html")
 		if err != nil {
 			http.Error(w, "Partials Parse Error: "+err.Error(), http.StatusInternalServerError)
+			return
+		}
+		_, err = tmpl.ParseGlob("templates/partials/components/*.html")
+		if err != nil {
+			http.Error(w, "Components Parse Error: "+err.Error(), http.StatusInternalServerError)
 			return
 		}
 	} else {

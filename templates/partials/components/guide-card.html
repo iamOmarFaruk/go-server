@@ -1,0 +1,63 @@
+{{define "guide-card"}}
+<div
+    class="group relative aspect-[3/4] rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer transform hover:-translate-y-2">
+    <!-- Background Image -->
+    <img src="{{.ImageURL}}" alt="{{.Title}}"
+        class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+
+    <!-- Enhanced Gradient Overlay -->
+    <div
+        class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/20 opacity-90 group-hover:opacity-100 transition-opacity duration-300">
+    </div>
+
+    <!-- Top Category Badge -->
+    <div class="absolute top-6 left-6 right-6 flex justify-between items-start">
+        <div
+            class="px-4 py-2 rounded-full bg-gradient-to-r from-primary-600/90 to-emerald-500/90 backdrop-blur-md shadow-lg border border-white/20">
+            <span class="text-white text-xs font-bold tracking-wider uppercase drop-shadow-lg">{{.Category}}</span>
+        </div>
+        <div class="px-3 py-2 rounded-full bg-black/40 backdrop-blur-md border border-white/20">
+            <span class="text-white/90 text-xs font-medium">{{.ReadTime}}</span>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="absolute inset-0 p-8 flex flex-col justify-end">
+        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+            <h3 class="text-2xl font-display font-bold text-white mb-3 leading-tight drop-shadow-lg">
+                {{.Title}}</h3>
+            <p
+                class="text-white/80 text-sm line-clamp-2 mb-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 drop-shadow-md">
+                {{.Description}}</p>
+
+            <!-- Author Section -->
+            <div
+                class="flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-200 border-t border-white/30 pt-4">
+                <div class="flex items-center gap-3">
+                    <div
+                        class="w-8 h-8 rounded-full bg-gradient-to-br from-primary-400 to-emerald-400 flex items-center justify-center text-white font-bold text-xs shadow-lg">
+                        {{slice .Author 0 1}}
+                    </div>
+                    <span class="text-white text-sm font-bold drop-shadow-md">{{.Author}}</span>
+                </div>
+                <div class="flex items-center gap-1 text-white/80">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="{{.Link}}" class="absolute inset-0 z-10"></a>
+</div>
+{{end}}
+
+<!--
+ ┌── o m a r ──┐
+ │ gh@iamOmarFaruk
+ │ omarfaruk.dev
+ │ Created: 27-12-25
+ │ Updated: 27-12-25
+ └─ go-server ───┘
+-->
