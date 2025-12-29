@@ -177,13 +177,21 @@
         const content = button.nextElementSibling;
         const icon = button.querySelector('svg');
 
-        if (content.style.maxHeight) {
-            content.style.maxHeight = null;
-            content.classList.add('max-h-0');
+        const isOpen = content.style.maxHeight && content.style.maxHeight !== "0px";
+
+        if (isOpen) {
+            content.style.maxHeight = content.scrollHeight + "px";
+            requestAnimationFrame(() => {
+                content.style.maxHeight = "0px";
+                content.classList.add('max-h-0');
+            });
             icon.classList.remove('rotate-180');
         } else {
             content.classList.remove('max-h-0');
-            content.style.maxHeight = content.scrollHeight + "px";
+            content.style.maxHeight = "0px";
+            requestAnimationFrame(() => {
+                content.style.maxHeight = content.scrollHeight + "px";
+            });
             icon.classList.add('rotate-180');
         }
     }
